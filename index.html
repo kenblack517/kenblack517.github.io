@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://suisenvbclub.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/">
-  <link rel="stylesheet" href="css/style.css?v=1773573357">
+  <link rel="stylesheet" href="css/style.css?v=1773573779">
 </head>
 <body>
 
@@ -187,7 +187,7 @@
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773573357"></script>
+  <script src="data/players.js?v=1773573779"></script>
   <script src="data/schedule.js"></script>
   <script src="js/main.js"></script>
   <script>
@@ -250,7 +250,7 @@
     slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     slider.addEventListener('touchend', e => {
       const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) goSlide(current + (diff > 0 ? 1 : -1));
+      if (Math.abs(diff) > 20) goSlide(current + (diff > 0 ? 1 : -1));
     }, { passive: true });
 
 
