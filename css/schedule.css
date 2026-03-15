@@ -132,9 +132,10 @@
 }
 
 .sch-tournament {
-  font-size: 12px;
-  color: var(--gray);
-  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
 
