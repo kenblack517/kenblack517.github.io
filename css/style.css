@@ -1043,10 +1043,6 @@ body {
 
   .hamburger { display: flex; z-index: 1001; }
 
-  .player-slider-wrap { padding: 0; }
-  .slider-btn { display: none; }
-  .player-slider .player-card { flex: 0 0 100%; }
-  .slider-swipe-hint { display: block; }
 
   .about-grid {
     grid-template-columns: 1fr;
