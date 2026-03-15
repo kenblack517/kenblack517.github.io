@@ -23,6 +23,40 @@ const SCHEDULE = [
     result: null,
   },
 
+  {
+    type: "upcoming",
+    year: "2026",
+    month: "6月",
+    day: "07",
+    tournament: "全日本クラブカップ選手権東京都予選 3日目",
+    place: "桜美林学園",
+    time: "9:00〜",
+    score: null,
+    result: null,
+  },
+  {
+    type: "upcoming",
+    year: "2026",
+    month: "6月",
+    day: "13",
+    tournament: "国民スポーツ大会東京都予選",
+    place: "未定",
+    time: "9:00〜",
+    score: null,
+    result: null,
+  },
+  {
+    type: "upcoming",
+    year: "2026",
+    month: "6月",
+    day: "14",
+    tournament: "国民スポーツ大会東京都予選",
+    place: "未定",
+    time: "9:00〜",
+    score: null,
+    result: null,
+  },
+
   // ---- 試合結果 ----
   {
     type: "result",
