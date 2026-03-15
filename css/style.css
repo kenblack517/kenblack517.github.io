@@ -966,6 +966,7 @@ body {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+    text-align: center;
   }
 
   .players-grid {
