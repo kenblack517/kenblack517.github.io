@@ -3,24 +3,13 @@ const SCHEDULE = [
   {
     type: "upcoming",        // "upcoming" | "result"
     year: "2026",
-    month: "3月",
-    day: "21",
-    tournament: "XXXXX",
-    place: "東京体育館",
-    time: "13:00〜",
+    month: "5月",
+    day: "24",
+    tournament: "全日本クラブカップ選手権東京都予選 1日目",
+    place: "深川スポーツセンター",
+    time: "9:00〜",
     score: null,             // 結果なし
     result: null,            // "win" | "lose" | null
-  },
-  {
-    type: "upcoming",
-    year: "2026",
-    month: "4月",
-    day: "05",
-    tournament: "XXXXXX",
-    place: "未定",
-    time: "未定",
-    score: null,
-    result: null,
   },
 
   // ---- 試合結果 ----
