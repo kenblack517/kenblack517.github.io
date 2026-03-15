@@ -2,9 +2,9 @@
 // SNS リンク設定（ここを変更するだけで全ページに反映）
 // ============================================
 const SNS_LINKS = {
-  instagram: 'https://www.instagram.com/YOUR_INSTAGRAM_ID',
-  youtube:   'https://www.youtube.com/@YOUR_YOUTUBE_ID',
-  x:         'https://x.com/YOUR_X_ID',
+  instagram: 'https://www.instagram.com/suisen_volleyball_club/',
+  youtube:   'https://www.youtube.com/@suisen_volleyball',
+  x:         'https://x.com/ClubSuisen',
 };
 
 const snsHTML = `
