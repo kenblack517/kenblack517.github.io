@@ -11,6 +11,17 @@ const SCHEDULE = [
     score: null,             // 結果なし
     result: null,            // "win" | "lose" | null
   },
+  {
+    type: "upcoming",
+    year: "2026",
+    month: "6月",
+    day: "06",
+    tournament: "全日本クラブカップ選手権東京都予選 2日目",
+    place: "荒川スポーツセンター",
+    time: "9:00〜",
+    score: null,
+    result: null,
+  },
 
   // ---- 試合結果 ----
   {
