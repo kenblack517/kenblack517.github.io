@@ -1,0 +1,217 @@
+.page-hero {
+  position: relative;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 70px;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+}
+
+.page-hero-bg::after {
+  content: 'SCHEDULE';
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  font-family: var(--font-en);
+  font-size: 130px;
+  font-weight: 900;
+  color: rgba(41, 182, 216, 0.05);
+  letter-spacing: -5px;
+  pointer-events: none;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.page-title {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.schedule-block { margin-bottom: 60px; }
+
+.schedule-block-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--dark);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.block-badge {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.block-badge.upcoming { background: var(--primary); color: white; }
+.block-badge.results  { background: var(--dark); color: white; }
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 24px;
+  border-radius: 12px;
+  background: var(--light);
+  border: 1px solid #eee;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.schedule-item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(41, 182, 216, 0.1);
+}
+
+.sch-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.sch-month {
+  font-family: var(--font-en);
+  font-size: 11px;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.sch-day {
+  font-family: var(--font-en);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--dark);
+}
+
+.sch-tournament {
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.sch-opponent {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.sch-place {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.sch-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-en);
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.score.win  { color: var(--primary); }
+.score.lose { color: var(--gray); }
+.score-sep  { color: #ddd; font-size: 20px; }
+
+.sch-status {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.win-badge      { background: rgba(41, 182, 216, 0.1); color: var(--primary); }
+.lose-badge     { background: rgba(231, 76, 60, 0.1);  color: #e74c3c; }
+.upcoming-badge { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+
+/* 年間成績 */
+.season-summary { margin-top: 60px; }
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.summary-card.win-card  { border-color: var(--primary); }
+.summary-card.lose-card { border-color: #e74c3c; }
+
+.summary-num {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.win-card .summary-num  { color: var(--primary); }
+.lose-card .summary-num { color: #e74c3c; }
+
+.summary-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gray);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .schedule-item {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .sch-score { grid-column: 2; }
+  .sch-status { grid-column: 2; }
+  .summary-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .page-hero { height: 200px; }
+  .page-title { font-size: 32px; }
+  .sch-day { font-size: 28px; }
+  .sch-opponent { font-size: 15px; }
+  .sch-score { font-size: 24px; gap: 6px; }
+  .schedule-item { gap: 16px; padding: 16px; }
+}

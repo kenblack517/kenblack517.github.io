@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUISEN Volleyball Club</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+
+  <!-- スプラッシュスクリーン -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <span class="splash-logo-text">SUISEN</span>
+        <span class="splash-logo-sub">VOLLEYBALL CLUB</span>
+      </div>
+      <div class="splash-line"></div>
+    </div>
+  </div>
+
+  <!-- ナビゲーション -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html">
+          <span class="logo-text">SUISEN</span>
+          <span class="logo-sub">VOLLEYBALL CLUB</span>
+        </a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html" class="active">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="players.html">PLAYERS</a></li>
+          <li><a href="schedule.html">SCHEDULE</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <!-- スライドショー背景 -->
+    <div class="hero-slides">
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    <!-- オーバーレイ -->
+    <div class="hero-overlay"></div>
+    <!-- 装飾ライン -->
+    <div class="hero-deco"></div>
+    <!-- スライドインジケーター -->
+    <div class="hero-indicators">
+      <div class="hero-dot active" onclick="goToSlide(0)"></div>
+      <div class="hero-dot" onclick="goToSlide(1)"></div>
+      <div class="hero-dot" onclick="goToSlide(2)"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-label">SUISEN VOLLEYBALL CLUB</p>
+      <h1 class="hero-title">昼も夜も<br>日本一</h1>
+      <p class="hero-desc">勝利への情熱を、コートで証明する。</p>
+      <div class="hero-buttons">
+        <a href="players.html" class="btn btn-primary">PLAYERS</a>
+        <a href="schedule.html" class="btn btn-outline">SCHEDULE</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ニュースセクション（非表示中） -->
+  <!--
+  <section class="section news-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">LATEST NEWS</p>
+        <h2 class="section-title">最新情報</h2>
+      </div>
+      <div class="news-list">
+        <article class="news-item">
+          <span class="news-date">2026.03.14</span>
+          <span class="news-tag">試合結果</span>
+          <p class="news-text">春季リーグ 第3戦 vs 東都クラブ ● 3-1 勝利</p>
+        </article>
+        <article class="news-item">
+          <span class="news-date">2026.03.08</span>
+          <span class="news-tag">お知らせ</span>
+          <p class="news-text">2026年度 春季リーグ スケジュールを公開しました</p>
+        </article>
+        <article class="news-item">
+          <span class="news-date">2026.02.22</span>
+          <span class="news-tag">試合結果</span>
+          <p class="news-text">練習試合 vs 北星バレーボールクラブ ● 3-0 勝利</p>
+        </article>
+        <article class="news-item">
+          <span class="news-date">2026.02.01</span>
+          <span class="news-tag">お知らせ</span>
+          <p class="news-text">2026年度の活動を開始しました</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- チーム紹介セクション -->
+  <section class="section about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-image-placeholder">
+            <div class="volleyball-icon">🏐</div>
+          </div>
+        </div>
+        <div class="about-content">
+          <p class="section-label">ABOUT US</p>
+          <h2 class="section-title">チームについて</h2>
+          <p class="about-text">
+            SUISEN Volleyball Clubは、バレーボールへの情熱を持つ社会人メンバーで構成されたチームです。
+            「昼も夜も日本一」のスローガンのもと、日々の練習から試合まで全力で取り組んでいます。
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">15</span>
+              <span class="stat-label">MEMBERS</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">5</span>
+              <span class="stat-label">YEARS / SINCE 2021</span>
+            </div>
+          </div>
+          <div style="margin-top: 40px;">
+            <a href="about.html" class="btn btn-primary">チームの詳細を見る →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 選手ピックアップ（スライダー） -->
+  <section class="section players-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">OUR PLAYERS</p>
+        <h2 class="section-title">選手紹介</h2>
+      </div>
+      <div class="player-slider-wrap">
+        <div class="player-slider-track">
+          <div class="player-slider" id="playerSlider">
+            <!-- JSで生成 -->
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" id="sliderPrev">&#8592;</button>
+        <button class="slider-btn slider-next" id="sliderNext">&#8594;</button>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+      <div class="section-more">
+        <a href="players.html" class="btn btn-primary">全選手を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 次の試合 -->
+  <section class="section next-match-section" id="next-match-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">NEXT MATCH</p>
+        <h2 class="section-title">次の試合</h2>
+      </div>
+      <div id="next-match-card"></div>
+      <div class="section-more">
+        <a href="schedule.html" class="btn btn-primary">スケジュール一覧</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text">SUISEN</span>
+        <span class="logo-sub">VOLLEYBALL CLUB</span>
+      </div>
+      <p class="footer-slogan">昼も夜も日本一</p>
+      <nav class="footer-nav">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="players.html">PLAYERS</a>
+        <a href="schedule.html">SCHEDULE</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="data/players.js"></script>
+  <script src="data/schedule.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const NO_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8eef3'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%23b0bec5'/%3E%3Cellipse cx='50' cy='80' rx='28' ry='20' fill='%23b0bec5'/%3E%3C/svg%3E";
+
+    // 選手のみ（STAFFを除く）
+    const sliderPlayers = PLAYERS.filter(p => p.pos !== 'STAFF' && p.num !== null);
+    const slider = document.getElementById('playerSlider');
+    const dotsWrap = document.getElementById('sliderDots');
+
+    const VISIBLE = 3; // 一度に表示する枚数
+    let current = 0;
+
+    // カード生成
+    sliderPlayers.forEach((p, i) => {
+      const card = document.createElement('a');
+      card.className = 'player-card';
+      card.href = `player.html?id=${p.num}`;
+      card.innerHTML = `
+        <div class="player-number">#${p.num}</div>
+        <div class="player-avatar slider-avatar">
+          <img src="images/players/${p.num}.jpg" alt="${p.name}" data-fallback="no-image">
+        </div>
+        <div class="player-info">
+          <p class="player-pos">${p.posLabel}</p>
+          <h3 class="player-name">${p.name}${p.captain ? ' <span class="captain-badge">主将</span>' : ''}</h3>
+        </div>
+      `;
+      slider.appendChild(card);
+
+      // ドット生成
+      const dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goSlide(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    // 画像エラー処理
+    slider.querySelectorAll('img[data-fallback="no-image"]').forEach(img => {
+      img.onerror = function() { this.onerror = null; this.src = NO_IMAGE; };
+    });
+
+    function goSlide(index) {
+      const cards = slider.querySelectorAll('.player-card');
+      const dots = dotsWrap.querySelectorAll('.slider-dot');
+      const cardWidth = cards[0].offsetWidth + 24; // gap=24px
+      const trackWidth = document.querySelector('.player-slider-track').offsetWidth;
+      const visible = Math.max(1, Math.floor(trackWidth / cardWidth));
+      const max = Math.max(0, sliderPlayers.length - visible);
+      current = Math.min(Math.max(index, 0), max);
+      slider.style.transform = `translateX(-${current * cardWidth}px)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById('sliderPrev').addEventListener('click', () => goSlide(current - 1));
+    document.getElementById('sliderNext').addEventListener('click', () => goSlide(current + 1));
+
+    // リサイズ時に位置再計算
+    window.addEventListener('resize', () => goSlide(current));
+
+    // ネクストマッチ: SCHEDULEデータの最初のupcomingを表示
+    const nextMatch = SCHEDULE.find(s => s.type === 'upcoming');
+    const nextMatchCard = document.getElementById('next-match-card');
+    if (nextMatch) {
+      nextMatchCard.innerHTML = `
+        <div class="match-card">
+          <div class="match-date-block">
+            <span class="match-month">${nextMatch.month}</span>
+            <span class="match-day">${nextMatch.day}</span>
+            <span class="match-year">${nextMatch.year}</span>
+          </div>
+          <div class="match-info-block">
+            <p><span class="match-icon">🏆</span>${nextMatch.tournament}</p>
+            <p><span class="match-icon">📍</span>${nextMatch.place}</p>
+            ${nextMatch.time ? `<p><span class="match-icon">🕐</span>${nextMatch.time} 開始予定</p>` : ''}
+          </div>
+        </div>`;
+    } else {
+      document.getElementById('next-match-section').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCHEDULE | SUISEN Volleyball Club</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/schedule.css?v=2">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html">
+          <span class="logo-text">SUISEN</span>
+          <span class="logo-sub">VOLLEYBALL CLUB</span>
+        </a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="players.html">PLAYERS</a></li>
+          <li><a href="schedule.html" class="active">SCHEDULE</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <p class="section-label">SCHEDULE & RESULTS</p>
+      <h1 class="page-title">試合日程・結果</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container" id="schedule-container">
+      <!-- JSで動的生成 -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text">SUISEN</span>
+        <span class="logo-sub">VOLLEYBALL CLUB</span>
+      </div>
+      <p class="footer-slogan">昼も夜も日本一</p>
+      <nav class="footer-nav">
+        <a href="index.html">HOME</a>
+        <a href="players.html">PLAYERS</a>
+        <a href="schedule.html">SCHEDULE</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="data/schedule.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderSchedule() {
+      const upcoming = SCHEDULE.filter(s => s.type === 'upcoming');
+      const results  = SCHEDULE.filter(s => s.type === 'result');
+
+      function itemHtml(s) {
+        const placeTime = s.time
+          ? `📍 ${s.place} / 🕐 ${s.time}`
+          : `📍 ${s.place}`;
+
+        const scoreHtml = s.score
+          ? `<div class="sch-score">
+               <span class="score ${s.result === 'win' ? 'win' : 'lose'}">${s.score.us}</span>
+               <span class="score-sep">-</span>
+               <span class="score ${s.result === 'win' ? 'lose' : 'win'}">${s.score.them}</span>
+             </div>`
+          : '';
+
+        const statusHtml = s.type === 'upcoming'
+          ? `<div class="sch-status upcoming-badge">予定</div>`
+          : s.result === 'win'
+            ? `<div class="sch-status win-badge">WIN</div>`
+            : `<div class="sch-status lose-badge">LOSE</div>`;
+
+        return `
+          <div class="schedule-item ${s.type === 'upcoming' ? 'upcoming' : 'result'}">
+            <div class="sch-date">
+              <span class="sch-month">${s.month}</span>
+              <span class="sch-day">${s.day}</span>
+            </div>
+            <div class="sch-info">
+              <p class="sch-tournament">${s.tournament}</p>
+              <p class="sch-place">${placeTime}</p>
+            </div>
+            ${scoreHtml}
+            ${statusHtml}
+          </div>`;
+      }
+
+      document.getElementById('schedule-container').innerHTML = `
+        <div class="schedule-block">
+          <h2 class="schedule-block-title">
+            <span class="block-badge upcoming">UPCOMING</span>今後の試合
+          </h2>
+          <div class="schedule-list">${upcoming.map(itemHtml).join('')}</div>
+        </div>
+        <div class="schedule-block">
+          <h2 class="schedule-block-title">
+            <span class="block-badge results">RESULTS</span>試合結果
+          </h2>
+          <div class="schedule-list">${results.map(itemHtml).join('')}</div>
+        </div>`;
+    }
+
+    renderSchedule();
+  </script>
+</body>
+</html>
