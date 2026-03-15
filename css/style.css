@@ -155,7 +155,7 @@ body {
   letter-spacing: 2px;
 }
 
-.nav ul {
+.nav > ul {
   display: flex;
   gap: 8px;
   list-style: none;
@@ -176,6 +176,44 @@ body {
 .nav a.active {
   color: var(--primary);
   background: rgba(41, 182, 216, 0.1);
+}
+
+/* PLAYERSドロップダウン */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown > a::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: var(--dark);
+  border: 1px solid rgba(41, 182, 216, 0.2);
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 180px;
+  list-style: none;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.header .nav-dropdown:hover .nav-submenu {
+  display: block;
+}
+
+.nav-submenu li a {
+  display: block;
+  padding: 8px 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 0;
 }
 
 .hamburger {
@@ -423,6 +461,44 @@ body {
 @keyframes scrollFade {
   0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
+}
+
+/* ============================================
+   パンくずリスト
+   ============================================ */
+.breadcrumb-bar {
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.breadcrumb-bar .breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.breadcrumb a {
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover { color: var(--primary); }
+
+.breadcrumb span { color: #ccc; }
+
+.breadcrumb span:last-child {
+  color: var(--dark);
+  font-weight: 700;
 }
 
 /* ============================================
@@ -796,82 +872,15 @@ body {
 
 .match-card {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
   background: var(--dark);
-  border-radius: 16px;
-  padding: 40px 48px;
+  border-radius: 12px;
+  padding: 24px 32px;
   border: 1px solid rgba(41, 182, 216, 0.2);
 }
 
-.match-date-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--primary);
-  border-radius: 12px;
-  padding: 20px 28px;
-  line-height: 1;
-}
-
-.match-month {
-  font-family: var(--font-en);
-  font-size: 13px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.8);
-  letter-spacing: 2px;
-}
-
-.match-day {
-  font-family: var(--font-en);
-  font-size: 56px;
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1;
-}
-
-.match-year {
-  font-family: var(--font-en);
-  font-size: 13px;
-  color: rgba(255,255,255,0.8);
-}
-
-.match-vs-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-}
-
-.match-team {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--white);
-}
-
-.match-team.home { color: var(--primary); }
-
-.match-vs {
-  font-family: var(--font-en);
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--gray);
-}
-
-.match-info-block {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.match-info-block p {
-  font-size: 14px;
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 
 /* ============================================
    試合結果セクション（TOPページ）
@@ -972,7 +981,6 @@ a.recent-result-card:hover {
   padding-left: 16px;
 }
 
-.match-icon { font-size: 16px; }
 
 /* ============================================
    フッター
@@ -1106,7 +1114,7 @@ a.recent-result-card:hover {
     visibility: visible;
   }
 
-  body > .nav ul {
+  body > .nav > ul {
     flex-direction: column;
     align-items: center;
     gap: 4px;
@@ -1123,6 +1131,10 @@ a.recent-result-card:hover {
 
   body > .nav a:hover { color: var(--primary); }
   body > .nav a.active { color: var(--primary); }
+
+  /* モバイル: サブメニュー非表示 */
+  body > .nav .nav-dropdown > a::after { content: none; }
+  body > .nav .nav-submenu { display: none; }
 
   .nav-sns {
     display: flex;
@@ -1157,13 +1169,10 @@ a.recent-result-card:hover {
   }
 
   .match-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 24px;
-    padding: 32px 24px;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    padding: 16px;
   }
-
-  .match-date-block { align-self: center; width: fit-content; margin: 0 auto; }
 
   .about-stats { justify-content: center; }
 }

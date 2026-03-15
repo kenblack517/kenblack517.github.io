@@ -254,7 +254,7 @@
   padding: 4px 0;
   border-bottom: 1px solid #eee;
 }
-.match-vs { flex: 1; color: var(--dark); }
+.match-vs { flex: 1; color: var(--dark); font-size: 18px; font-weight: 900; }
 .match-score { font-family: var(--font-en); font-weight: 700; }
 .match-score.win  { color: var(--primary); }
 .match-score.lose { color: #e74c3c; }

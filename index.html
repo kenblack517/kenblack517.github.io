@@ -11,7 +11,8 @@
   <meta property="og:url" content="https://suisenvbclub.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/">
-  <link rel="stylesheet" href="css/style.css?v=1773582591">
+  <link rel="stylesheet" href="css/style.css?v=1773585791">
+  <link rel="stylesheet" href="css/news.css?v=1">
 </head>
 <body>
 
@@ -96,6 +97,48 @@
   </section>
   -->
 
+  <!-- お知らせセクション -->
+  <section class="section top-news-section" id="top-news-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">INFORMATION</p>
+        <h2 class="section-title">お知らせ</h2>
+      </div>
+      <div id="top-news-list" class="news-list-page"></div>
+      <div class="section-more">
+        <a href="news" class="btn btn-primary">お知らせ一覧</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 次の試合 -->
+  <section class="section next-match-section" id="next-match-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">NEXT MATCH</p>
+        <h2 class="section-title">次の試合</h2>
+      </div>
+      <div id="next-match-card"></div>
+      <div class="section-more">
+        <a href="schedule" class="btn btn-primary">スケジュール一覧</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 試合結果セクション -->
+  <section class="section recent-results-section" id="recent-results-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">RECENT RESULTS</p>
+        <h2 class="section-title">試合結果</h2>
+      </div>
+      <div id="recent-results-list"></div>
+      <div class="section-more">
+        <a href="schedule" class="btn btn-primary">結果一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
   <!-- チーム紹介セクション -->
   <section class="section about-section">
     <div class="container">
@@ -153,34 +196,6 @@
     </div>
   </section>
 
-  <!-- 次の試合 -->
-  <section class="section next-match-section" id="next-match-section">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">NEXT MATCH</p>
-        <h2 class="section-title">次の試合</h2>
-      </div>
-      <div id="next-match-card"></div>
-      <div class="section-more">
-        <a href="schedule" class="btn btn-primary">スケジュール一覧</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 試合結果セクション -->
-  <section class="section recent-results-section" id="recent-results-section">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">RECENT RESULTS</p>
-        <h2 class="section-title">試合結果</h2>
-      </div>
-      <div id="recent-results-list"></div>
-      <div class="section-more">
-        <a href="schedule" class="btn btn-primary">結果一覧を見る</a>
-      </div>
-    </div>
-  </section>
-
   <!-- フッター -->
   <footer class="footer">
     <div class="footer-inner">
@@ -194,14 +209,16 @@
         <a href="about">ABOUT</a>
         <a href="players">PLAYERS</a>
         <a href="schedule">SCHEDULE</a>
+        <a href="news">NEWS</a>
       </nav>
       <div class="footer-sns"></div>
       <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773582591"></script>
+  <script src="data/players.js?v=1773585791"></script>
   <script src="data/schedule.js"></script>
+  <script src="data/news.js"></script>
   <script src="js/main.js"></script>
   <script>
     document.getElementById('top-member-count').textContent = PLAYERS.length;
@@ -274,19 +291,41 @@
     if (nextMatch) {
       nextMatchCard.innerHTML = `
         <div class="match-card">
-          <div class="match-date-block">
-            <span class="match-month">${nextMatch.month}</span>
-            <span class="match-day">${nextMatch.day}</span>
-            <span class="match-year">${nextMatch.year}</span>
+          <div class="rr-date">
+            <span class="rr-month">${nextMatch.month}</span>
+            <span class="rr-day">${nextMatch.day}</span>
           </div>
-          <div class="match-info-block">
-            <p><span class="match-icon">🏆</span>${nextMatch.tournament}</p>
-            <p><span class="match-icon">📍</span>${nextMatch.place}</p>
-            ${nextMatch.time ? `<p><span class="match-icon">🕐</span>${nextMatch.time} 開始予定</p>` : ''}
+          <div class="rr-info">
+            <p class="rr-tournament">🏆 ${nextMatch.tournament}</p>
+            <p class="rr-place">📍 ${nextMatch.place}</p>
+            ${nextMatch.time ? `<p class="rr-place">🕐 ${nextMatch.time} 開始予定</p>` : ''}
           </div>
         </div>`;
     } else {
       document.getElementById('next-match-section').style.display = 'none';
+    }
+
+    // お知らせ: 直近3件を表示
+    const CAT_LABELS = { result: '大会報告', info: 'お知らせ', event: 'イベント' };
+    const topNewsList = document.getElementById('top-news-list');
+    const latestNews = NEWS.slice(0, 3);
+    if (latestNews.length > 0) {
+      topNewsList.innerHTML = latestNews.map(n => {
+        const dateStr = n.date.replace(/-/g, '.').slice(2);
+        const catLabel = CAT_LABELS[n.category] || n.category;
+        return `
+          <a class="news-card" href="news#${n.id}">
+            <div class="news-card-body">
+              <div class="news-card-meta">
+                <span class="news-card-date">${dateStr}</span>
+                <span class="news-cat ${n.category}">${catLabel}</span>
+              </div>
+              <h3 class="news-card-title">${n.title}</h3>
+            </div>
+          </a>`;
+      }).join('');
+    } else {
+      document.getElementById('top-news-section').style.display = 'none';
     }
 
     // 試合結果: 結果入力済みの直近3件を表示

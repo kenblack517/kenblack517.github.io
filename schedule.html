@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://suisenvbclub.com/schedule.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/schedule.html">
-  <link rel="stylesheet" href="css/style.css?v=1773582591">
+  <link rel="stylesheet" href="css/style.css?v=1773585791">
   <link rel="stylesheet" href="css/schedule.css?v=2">
 </head>
 <body>
@@ -43,6 +43,7 @@
         <a href="./">HOME</a>
         <a href="players">PLAYERS</a>
         <a href="schedule">SCHEDULE</a>
+        <a href="news">NEWS</a>
       </nav>
       <div class="footer-sns"></div>
       <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
@@ -179,6 +180,11 @@
         : '<p class="sch-empty">まだ試合結果はありません。</p>';
 
       document.getElementById('schedule-container').innerHTML = `
+        <nav class="breadcrumb">
+          <a href="./">HOME</a>
+          <span>›</span>
+          <span>SCHEDULE</span>
+        </nav>
         <div class="schedule-block">
           <h2 class="schedule-block-title">
             <span class="block-badge upcoming">UPCOMING</span>今後の試合

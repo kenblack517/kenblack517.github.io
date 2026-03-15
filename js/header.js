@@ -9,6 +9,7 @@
     if (page === 'about')    return /\/about(\.html)?$/.test(path) ? 'class="active"' : '';
     if (page === 'players')  return /\/players?(\.html)?(#.*)?$/.test(path) ? 'class="active"' : '';
     if (page === 'schedule') return /\/schedule(\.html)?$/.test(path) ? 'class="active"' : '';
+    if (page === 'news')     return /\/news(\.html)?$/.test(path) ? 'class="active"' : '';
     return '';
   }
 
@@ -26,8 +27,28 @@
         <ul>
           <li><a href="./" ${active('home')}>HOME</a></li>
           <li><a href="about" ${active('about')}>ABOUT</a></li>
-          <li><a href="players" ${active('players')}>PLAYERS</a></li>
+          <li class="nav-dropdown">
+            <a href="players" ${active('players')}>PLAYERS</a>
+            <ul class="nav-submenu">
+              <li><a href="players">すべて</a></li>
+              <li><a href="players#pos-s">セッター</a></li>
+              <li><a href="players#pos-oh">アウトサイドヒッター</a></li>
+              <li><a href="players#pos-mb">ミドルブロッカー</a></li>
+              <li><a href="players#pos-op">オポジット</a></li>
+              <li><a href="players#pos-l">リベロ</a></li>
+              <li><a href="players#pos-staff">スタッフ</a></li>
+            </ul>
+          </li>
           <li><a href="schedule" ${active('schedule')}>SCHEDULE</a></li>
+          <li class="nav-dropdown">
+            <a href="news" ${active('news')}>NEWS</a>
+            <ul class="nav-submenu">
+              <li><a href="news">すべて</a></li>
+              <li><a href="news#cat-result">大会報告</a></li>
+              <li><a href="news#cat-info">お知らせ</a></li>
+              <li><a href="news#cat-event">イベント</a></li>
+            </ul>
+          </li>
         </ul>
         <div class="nav-sns"></div>
       </nav>
@@ -40,4 +61,5 @@
 
   const script = document.currentScript;
   script.parentNode.insertBefore(header, script);
+
 })();
