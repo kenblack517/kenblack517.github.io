@@ -25,6 +25,9 @@ if (headerSnsTgt) headerSnsTgt.innerHTML = snsHTML;
 const snsTgt = document.querySelector('.footer-sns');
 if (snsTgt) snsTgt.innerHTML = snsHTML;
 
+const navSnsTgt = document.querySelector('.nav-sns');
+if (navSnsTgt) navSnsTgt.innerHTML = snsHTML;
+
 // ============================================
 // スプラッシュスクリーン（初回のみ）
 // ============================================

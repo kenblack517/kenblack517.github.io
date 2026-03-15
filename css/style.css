@@ -994,6 +994,22 @@ body {
   body > .nav a:hover { color: var(--primary); }
   body > .nav a.active { color: var(--primary); }
 
+  .nav-sns {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .nav-sns a {
+    color: rgba(200, 210, 230, 0.7);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-sns a:hover { color: var(--primary); }
+
   .hamburger { display: flex; z-index: 1001; }
 
   .player-slider .player-card {
