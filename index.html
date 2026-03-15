@@ -30,17 +30,17 @@
   <header class="header">
     <div class="header-inner">
       <div class="logo">
-        <a href="index.html">
+        <a href="./">
           <span class="logo-text">SUISEN</span>
           <span class="logo-sub">VOLLEYBALL CLUB</span>
         </a>
       </div>
       <nav class="nav">
         <ul>
-          <li><a href="index.html" class="active">HOME</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="players.html">PLAYERS</a></li>
-          <li><a href="schedule.html">SCHEDULE</a></li>
+          <li><a href="./" class="active">HOME</a></li>
+          <li><a href="about">ABOUT</a></li>
+          <li><a href="players">PLAYERS</a></li>
+          <li><a href="schedule">SCHEDULE</a></li>
         </ul>
         <div class="nav-sns"></div>
       </nav>
@@ -74,8 +74,8 @@
       <h1 class="hero-title">昼も夜も<br>日本一</h1>
       <p class="hero-desc">勝利への情熱を、コートで証明する。</p>
       <div class="hero-buttons">
-        <a href="players.html" class="btn btn-primary">PLAYERS</a>
-        <a href="schedule.html" class="btn btn-outline">SCHEDULE</a>
+        <a href="players" class="btn btn-primary">PLAYERS</a>
+        <a href="schedule" class="btn btn-outline">SCHEDULE</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -145,7 +145,7 @@
             </div>
           </div>
           <div style="margin-top: 40px;">
-            <a href="about.html" class="btn btn-primary">チームの詳細を見る →</a>
+            <a href="about" class="btn btn-primary">チームの詳細を見る →</a>
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@
       </div>
       <div class="slider-dots" id="sliderDots"></div>
       <div class="section-more">
-        <a href="players.html" class="btn btn-primary">全選手を見る</a>
+        <a href="players" class="btn btn-primary">全選手を見る</a>
       </div>
     </div>
   </section>
@@ -184,7 +184,7 @@
       </div>
       <div id="next-match-card"></div>
       <div class="section-more">
-        <a href="schedule.html" class="btn btn-primary">スケジュール一覧</a>
+        <a href="schedule" class="btn btn-primary">スケジュール一覧</a>
       </div>
     </div>
   </section>
@@ -198,10 +198,10 @@
       </div>
       <p class="footer-slogan">昼も夜も日本一</p>
       <nav class="footer-nav">
-        <a href="index.html">HOME</a>
-        <a href="about.html">ABOUT</a>
-        <a href="players.html">PLAYERS</a>
-        <a href="schedule.html">SCHEDULE</a>
+        <a href="./">HOME</a>
+        <a href="about">ABOUT</a>
+        <a href="players">PLAYERS</a>
+        <a href="schedule">SCHEDULE</a>
       </nav>
       <div class="footer-sns"></div>
       <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
@@ -226,7 +226,7 @@
     sliderPlayers.forEach((p, i) => {
       const card = document.createElement('a');
       card.className = 'player-card';
-      card.href = `player.html?id=${p.num}`;
+      card.href = `player#${p.num}`;
       card.innerHTML = `
         <div class="player-number">#${p.num}</div>
         <div class="player-avatar slider-avatar">

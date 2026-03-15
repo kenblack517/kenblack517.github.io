@@ -12,17 +12,17 @@
   <header class="header">
     <div class="header-inner">
       <div class="logo">
-        <a href="index.html">
+        <a href="./">
           <span class="logo-text">SUISEN</span>
           <span class="logo-sub">VOLLEYBALL CLUB</span>
         </a>
       </div>
       <nav class="nav">
         <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="players.html" class="active">PLAYERS</a></li>
-          <li><a href="schedule.html">SCHEDULE</a></li>
+          <li><a href="./">HOME</a></li>
+          <li><a href="about">ABOUT</a></li>
+          <li><a href="players" class="active">PLAYERS</a></li>
+          <li><a href="schedule">SCHEDULE</a></li>
         </ul>
         <div class="nav-sns"></div>
       </nav>
@@ -46,10 +46,10 @@
       </div>
       <p class="footer-slogan">昼も夜も日本一</p>
       <nav class="footer-nav">
-        <a href="index.html">HOME</a>
-        <a href="about.html">ABOUT</a>
-        <a href="players.html">PLAYERS</a>
-        <a href="schedule.html">SCHEDULE</a>
+        <a href="./">HOME</a>
+        <a href="about">ABOUT</a>
+        <a href="players">PLAYERS</a>
+        <a href="schedule">SCHEDULE</a>
       </nav>
       <div class="footer-sns"></div>
       <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
@@ -61,18 +61,17 @@
   <script>
     const NO_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8eef3'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%23b0bec5'/%3E%3Cellipse cx='50' cy='80' rx='28' ry='20' fill='%23b0bec5'/%3E%3C/svg%3E";
 
-    const params = new URLSearchParams(location.search);
-    const slug = params.get('slug');
-    const player = slug
-      ? PLAYERS.find(p => p.slug === slug)
-      : PLAYERS.find(p => p.num === parseInt(params.get('id')));
+    const hash = location.hash.slice(1);
+    const player = /^\d+$/.test(hash)
+      ? PLAYERS.find(p => p.num === parseInt(hash))
+      : PLAYERS.find(p => p.slug === hash);
     const page = document.getElementById('player-page');
 
     if (!player) {
       page.innerHTML = `
         <div class="player-not-found">
           <p>選手が見つかりませんでした。</p>
-          <a href="players.html" class="btn btn-primary">選手一覧に戻る</a>
+          <a href="players" class="btn btn-primary">選手一覧に戻る</a>
         </div>
       `;
     } else {
@@ -100,9 +99,9 @@
         <section class="section">
           <div class="container">
             <nav class="breadcrumb breadcrumb-profile">
-              <a href="index.html">HOME</a>
+              <a href="./">HOME</a>
               <span>›</span>
-              <a href="players.html">PLAYERS</a>
+              <a href="players">PLAYERS</a>
               <span>›</span>
               <span>${player.name}</span>
             </nav>
@@ -192,7 +191,7 @@
       const idx = list.findIndex(p => p.num === current.num);
       if (idx <= 0) return '<div></div>';
       const prev = list[idx - 1];
-      return `<a href="player.html?id=${prev.num}" class="player-nav-btn">← #${prev.num} ${prev.name}</a>`;
+      return `<a href="player#${prev.num}" class="player-nav-btn">← #${prev.num} ${prev.name}</a>`;
     }
 
     function getNextPlayer(current) {
@@ -200,7 +199,7 @@
       const idx = list.findIndex(p => p.num === current.num);
       if (idx < 0 || idx >= list.length - 1) return '<div></div>';
       const next = list[idx + 1];
-      return `<a href="player.html?id=${next.num}" class="player-nav-btn">#${next.num} ${next.name} →</a>`;
+      return `<a href="player#${next.num}" class="player-nav-btn">#${next.num} ${next.name} →</a>`;
     }
   </script>
 </body>
