@@ -10,6 +10,7 @@
     if (page === 'players')  return /\/players?(\.html)?(#.*)?$/.test(path) ? 'class="active"' : '';
     if (page === 'schedule') return /\/schedule(\.html)?$/.test(path) ? 'class="active"' : '';
     if (page === 'news')     return /\/news(\.html)?$/.test(path) ? 'class="active"' : '';
+    if (page === 'contact')  return /\/contact(\.html)?$/.test(path) ? 'class="active"' : '';
     return '';
   }
 
@@ -49,6 +50,7 @@
               <li><a href="news#cat-event">イベント</a></li>
             </ul>
           </li>
+          <li><a href="contact" ${active('contact')}>CONTACT</a></li>
         </ul>
         <div class="nav-sns"></div>
       </nav>

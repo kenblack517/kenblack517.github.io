@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | SUISEN Volleyball Club</title>
+  <meta name="description" content="SUISEN Volleyball Clubへのお問い合わせ。入団希望・練習参加・取材・協賛など、お気軽にご連絡ください。">
+  <meta name="keywords" content="SUISEN,バレーボール,お問い合わせ,入団,練習参加">
+  <meta property="og:title" content="お問い合わせ | SUISEN Volleyball Club">
+  <meta property="og:description" content="SUISEN Volleyball Clubへのお問い合わせはこちら。">
+  <meta property="og:url" content="https://suisenvbclub.com/contact">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://suisenvbclub.com/contact">
+  <link rel="stylesheet" href="css/style.css?v=1773587722">
+  <link rel="stylesheet" href="css/contact.css?v=1">
+</head>
+<body>
+
+  <script src="js/header.js"></script>
+
+  <!-- ページヘッダー -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <p class="section-label">GET IN TOUCH</p>
+      <h1 class="page-title">お問い合わせ</h1>
+    </div>
+  </div>
+
+  <!-- フォームセクション -->
+  <section class="section">
+    <div class="container">
+
+      <!-- パンくず -->
+      <nav class="breadcrumb">
+        <a href="./">HOME</a>
+        <span>›</span>
+        <span>CONTACT</span>
+      </nav>
+
+      <!-- 案内文 -->
+      <div class="contact-lead">
+        <p>入団希望・練習見学・取材・協賛など、<br>お気軽にお問い合わせください。<br>内容を確認のうえ、折り返しご連絡いたします。</p>
+      </div>
+
+      <!-- フォーム -->
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label class="form-label" for="name">お名前<span class="required">*</span></label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="山田 太郎" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">メールアドレス<span class="required">*</span></label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="type">お問い合わせ種別<span class="required">*</span></label>
+          <select class="form-select" id="type" name="type" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="入団希望">入団希望</option>
+            <option value="練習見学・体験参加">練習見学・体験参加</option>
+            <option value="取材・メディア">取材・メディア</option>
+            <option value="協賛・スポンサー">協賛・スポンサー</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">お問い合わせ内容<span class="required">*</span></label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+        </div>
+
+        <p class="form-note">※ 送信ボタンを押すとメールアプリが開きます。送信内容を確認の上、メールを送信してください。</p>
+
+        <div class="contact-submit">
+          <button type="submit" class="btn btn-primary">送信する →</button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text">SUISEN</span>
+        <span class="logo-sub">VOLLEYBALL CLUB</span>
+      </div>
+      <p class="footer-slogan">昼も夜も日本一</p>
+      <nav class="footer-nav">
+        <a href="./">HOME</a>
+        <a href="about">ABOUT</a>
+        <a href="players">PLAYERS</a>
+        <a href="schedule">SCHEDULE</a>
+        <a href="news">NEWS</a>
+        <a href="contact">CONTACT</a>
+      </nav>
+      <div class="footer-sns"></div>
+      <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    const MAIL_TO = 'suisenvolleyballclub@gmail.com';
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const type    = document.getElementById('type').value;
+      const message = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent(`【お問い合わせ】${type} - ${name}`);
+      const body    = encodeURIComponent(
+        `お名前: ${name}\nメールアドレス: ${email}\nお問い合わせ種別: ${type}\n\n${message}`
+      );
+
+      window.location.href = `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
