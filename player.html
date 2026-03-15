@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PLAYER | SUISEN Volleyball Club</title>
-  <link rel="stylesheet" href="css/style.css?v=1773568645">
+  <link rel="stylesheet" href="css/style.css?v=1773569430">
   <link rel="stylesheet" href="css/player.css?v=4">
 </head>
 <body>
@@ -34,7 +34,7 @@
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773568645"></script>
+  <script src="data/players.js?v=1773569430"></script>
   <script src="js/main.js"></script>
   <script>
     const NO_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8eef3'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%23b0bec5'/%3E%3Cellipse cx='50' cy='80' rx='28' ry='20' fill='%23b0bec5'/%3E%3C/svg%3E";
@@ -108,35 +108,40 @@
                     <dt>人生最高到達点</dt>
                     <dd>${player.reach} cm</dd>
                   </div>` : ''}
+                  ${player.birthplace ? `
                   <div class="player-data-row">
                     <dt>出身地</dt>
                     <dd>${player.birthplace}</dd>
-                  </div>
+                  </div>` : ''}
                   ${player.highschool ? `
                   <div class="player-data-row">
                     <dt>出身高校</dt>
                     <dd>${player.highschool}</dd>
                   </div>` : ''}
+                  ${player.school ? `
                   <div class="player-data-row">
                     <dt>出身大学</dt>
                     <dd>${player.school}</dd>
-                  </div>
+                  </div>` : ''}
                 </dl>
 
+                ${player.style ? `
                 <div class="player-section">
                   <p class="player-section-label">プレースタイル</p>
                   <p class="player-section-text">${player.style}</p>
-                </div>
+                </div>` : ''}
 
+                ${player.word ? `
                 <div class="player-section">
                   <p class="player-section-label">好きな言葉</p>
                   <p class="player-quote">"${player.word}"</p>
-                </div>
+                </div>` : ''}
 
+                ${player.hobby ? `
                 <div class="player-section">
                   <p class="player-section-label">趣味</p>
                   <p class="player-section-text">${player.hobby}</p>
-                </div>
+                </div>` : ''}
               </div>
 
             </div>

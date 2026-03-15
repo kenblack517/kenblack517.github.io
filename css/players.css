@@ -252,6 +252,10 @@
   text-align: center;
 }
 
+.roster-num-name .roster-name {
+  padding-left: 36px;
+}
+
 .roster-staff-info {
   width: 100%;
   text-align: center;
