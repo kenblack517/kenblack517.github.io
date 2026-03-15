@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://suisenvbclub.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/">
-  <link rel="stylesheet" href="css/style.css?v=1773581158">
+  <link rel="stylesheet" href="css/style.css?v=1773581967">
 </head>
 <body>
 
@@ -200,7 +200,7 @@
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773581158"></script>
+  <script src="data/players.js?v=1773581967"></script>
   <script src="data/schedule.js"></script>
   <script src="js/main.js"></script>
   <script>
@@ -261,9 +261,12 @@
     // リサイズ時に位置再計算
     window.addEventListener('resize', () => goSlide(current));
 
-    // ネクストマッチ: 結果未入力のうち最も日付が近い試合を表示
-    const nextMatch = SCHEDULE
-      .filter(s => !(s.teams || s.resultSummary))
+    // ネクストマッチ: 結果未入力のdaysを展開して最も近い日を表示
+    const _allUpcomingDays = [];
+    SCHEDULE.filter(s => !(s.teams || s.resultSummary)).forEach(s => {
+      s.days.forEach(d => _allUpcomingDays.push({ ...d, tournament: s.tournament }));
+    });
+    const nextMatch = _allUpcomingDays
       .sort((a,b) => new Date(parseInt(a.year),parseInt(a.month)-1,parseInt(a.day)) - new Date(parseInt(b.year),parseInt(b.month)-1,parseInt(b.day)))[0];
     const nextMatchCard = document.getElementById('next-match-card');
     if (nextMatch) {
@@ -287,7 +290,11 @@
     // 試合結果: 結果入力済みの直近3件を表示
     const recentResults = SCHEDULE
       .filter(s => s.teams || s.resultSummary)
-      .sort((a,b) => new Date(parseInt(b.year),parseInt(b.month)-1,parseInt(b.day)) - new Date(parseInt(a.year),parseInt(a.month)-1,parseInt(a.day)))
+      .sort((a,b) => {
+        const lastA = a.days[a.days.length-1], lastB = b.days[b.days.length-1];
+        return new Date(parseInt(lastB.year),parseInt(lastB.month)-1,parseInt(lastB.day))
+             - new Date(parseInt(lastA.year),parseInt(lastA.month)-1,parseInt(lastA.day));
+      })
       .slice(0, 3);
     const recentResultsList = document.getElementById('recent-results-list');
     if (recentResults.length > 0) {
@@ -302,12 +309,12 @@
         return `
           <a class="recent-result-card" href="schedule#results">
             <div class="rr-date">
-              <span class="rr-month">${s.month}</span>
-              <span class="rr-day">${s.day}</span>
+              <span class="rr-month">${s.days[s.days.length-1].month}</span>
+              <span class="rr-day">${s.days[s.days.length-1].day}</span>
             </div>
             <div class="rr-info">
               <p class="rr-tournament">${s.tournament}</p>
-              <p class="rr-place">📍 ${s.place}</p>
+              <p class="rr-place">📍 ${s.days[0].place}</p>
               <div class="rr-teams">${teamsHtml}</div>
             </div>
             <div class="rr-arrow">詳細<br>→</div>
