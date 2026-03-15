@@ -867,7 +867,7 @@ body {
 
 .match-info-block p {
   font-size: 14px;
-  color: var(--gray);
+  color: var(--white);
   display: flex;
   align-items: center;
   gap: 8px;
