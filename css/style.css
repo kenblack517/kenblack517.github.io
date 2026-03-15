@@ -930,6 +930,8 @@ body {
   color: var(--primary);
 }
 
+.nav-sns { display: none; }
+
 .header-sns {
   display: flex;
   gap: 16px;
