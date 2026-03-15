@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PLAYER | SUISEN Volleyball Club</title>
-  <link rel="stylesheet" href="css/style.css?v=1773577929">
+  <link rel="stylesheet" href="css/style.css?v=1773578289">
   <link rel="stylesheet" href="css/player.css?v=4">
 </head>
 <body>
@@ -34,32 +34,56 @@
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773577929"></script>
+  <script src="data/players.js?v=1773578289"></script>
   <script src="js/main.js"></script>
   <script>
     const NO_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8eef3'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%23b0bec5'/%3E%3Cellipse cx='50' cy='80' rx='28' ry='20' fill='%23b0bec5'/%3E%3C/svg%3E";
 
-    const hash = location.hash.slice(1);
-    const player = /^\d+$/.test(hash)
-      ? PLAYERS.find(p => p.num === parseInt(hash))
-      : PLAYERS.find(p => p.slug === hash);
     const page = document.getElementById('player-page');
 
-    if (!player) {
-      page.innerHTML = `
-        <div class="player-not-found">
-          <p>選手が見つかりませんでした。</p>
-          <a href="players" class="btn btn-primary">選手一覧に戻る</a>
-        </div>
-      `;
-    } else {
-      // タイトルを更新
+    function getNumberedPlayers() {
+      return PLAYERS.filter(p => p.num !== null).sort((a, b) => a.num - b.num);
+    }
+
+    function getPrevPlayer(current) {
+      const list = getNumberedPlayers();
+      const idx = list.findIndex(p => p.num === current.num && p.name === current.name);
+      if (idx <= 0) return '<div></div>';
+      const prev = list[idx - 1];
+      const link = prev.num !== null ? `player#${prev.num}` : `player#${prev.slug}`;
+      return `<a href="${link}" class="player-nav-btn">← #${prev.num} ${prev.name}</a>`;
+    }
+
+    function getNextPlayer(current) {
+      const list = getNumberedPlayers();
+      const idx = list.findIndex(p => p.num === current.num && p.name === current.name);
+      if (idx < 0 || idx >= list.length - 1) return '<div></div>';
+      const next = list[idx + 1];
+      const link = next.num !== null ? `player#${next.num}` : `player#${next.slug}`;
+      return `<a href="${link}" class="player-nav-btn">#${next.num} ${next.name} →</a>`;
+    }
+
+    function render() {
+      const hash = location.hash.slice(1);
+      const player = /^\d+$/.test(hash)
+        ? PLAYERS.find(p => p.num === parseInt(hash))
+        : PLAYERS.find(p => p.slug === hash);
+
+      if (!player) {
+        page.innerHTML = `
+          <div class="player-not-found">
+            <p>選手が見つかりませんでした。</p>
+            <a href="players" class="btn btn-primary">選手一覧に戻る</a>
+          </div>
+        `;
+        return;
+      }
+
       document.title = `${player.name} | SUISEN Volleyball Club`;
 
       const imgSrc = player.num !== null
         ? `images/players/${player.num}.jpg`
         : `images/players/${player.slug}.jpg`;
-      const noImg = NO_IMAGE;
       const captainBadge = player.captain ? `<span class="player-captain-badge">主将</span>` : '';
 
       page.innerHTML = `
@@ -155,35 +179,17 @@
           </div>
         </section>
       `;
+
+      // 画像エラー処理
+      page.querySelectorAll('img[data-fallback="no-image"]').forEach(img => {
+        img.onerror = function() { this.onerror = null; this.src = NO_IMAGE; };
+      });
+
+      window.scrollTo(0, 0);
     }
 
-    // 画像エラー処理（ループ防止）
-    document.querySelectorAll('img[data-fallback="no-image"]').forEach(img => {
-      img.onerror = function() {
-        this.onerror = null;
-        this.src = NO_IMAGE;
-      };
-    });
-
-    function getNumberedPlayers() {
-      return PLAYERS.filter(p => p.num !== null).sort((a, b) => a.num - b.num);
-    }
-
-    function getPrevPlayer(current) {
-      const list = getNumberedPlayers();
-      const idx = list.findIndex(p => p.num === current.num);
-      if (idx <= 0) return '<div></div>';
-      const prev = list[idx - 1];
-      return `<a href="player#${prev.num}" class="player-nav-btn">← #${prev.num} ${prev.name}</a>`;
-    }
-
-    function getNextPlayer(current) {
-      const list = getNumberedPlayers();
-      const idx = list.findIndex(p => p.num === current.num);
-      if (idx < 0 || idx >= list.length - 1) return '<div></div>';
-      const next = list[idx + 1];
-      return `<a href="player#${next.num}" class="player-nav-btn">#${next.num} ${next.name} →</a>`;
-    }
+    render();
+    window.addEventListener('hashchange', render);
   </script>
 </body>
 </html>
