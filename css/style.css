@@ -48,7 +48,25 @@ body {
 
 .splash-inner {
   text-align: center;
-  animation: splashIn 0.8s ease both;
+}
+
+.splash-ball {
+  font-size: 72px;
+  line-height: 1;
+  margin-bottom: 24px;
+  animation: ballBounce 1.4s ease both;
+  display: block;
+}
+
+@keyframes ballBounce {
+  0%   { transform: translateY(-260px); animation-timing-function: ease-in; }
+  22%  { transform: translateY(20px) scaleY(0.78) scaleX(1.25); animation-timing-function: ease-out; }
+  38%  { transform: translateY(-90px); animation-timing-function: ease-in; }
+  54%  { transform: translateY(10px) scaleY(0.85) scaleX(1.15); animation-timing-function: ease-out; }
+  68%  { transform: translateY(-35px); animation-timing-function: ease-in; }
+  80%  { transform: translateY(4px) scaleY(0.9) scaleX(1.1); animation-timing-function: ease-out; }
+  90%  { transform: translateY(-12px); animation-timing-function: ease-in; }
+  100% { transform: translateY(0) scaleY(1) scaleX(1); }
 }
 
 .splash-logo {
@@ -56,6 +74,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  animation: splashIn 0.6s ease 1.2s both;
 }
 
 .splash-logo-text {
@@ -91,6 +110,7 @@ body {
   from { width: 0; }
   to   { width: 120px; }
 }
+
 
 /* ============================================
    ヘッダー

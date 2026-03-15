@@ -40,7 +40,7 @@ if (splash) {
     setTimeout(() => {
       splash.classList.add('hidden');
       setTimeout(() => { splash.style.display = 'none'; }, 600);
-    }, 1800);
+    }, 2400);
   }
 }
 
