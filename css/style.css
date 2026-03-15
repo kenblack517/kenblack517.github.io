@@ -780,6 +780,15 @@ body {
   transform: scale(1.3);
 }
 
+.slider-swipe-hint {
+  display: none;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 12px;
+}
+
 /* ============================================
    次の試合
    ============================================ */
@@ -1034,9 +1043,10 @@ body {
 
   .hamburger { display: flex; z-index: 1001; }
 
-  .player-slider .player-card {
-    flex: 0 0 calc(100% - 0px);
-  }
+  .player-slider-wrap { padding: 0; }
+  .slider-btn { display: none; }
+  .player-slider .player-card { flex: 0 0 100%; }
+  .slider-swipe-hint { display: block; }
 
   .about-grid {
     grid-template-columns: 1fr;
@@ -1061,8 +1071,12 @@ body {
   .about-stats { justify-content: center; }
 }
 
+@media (max-width: 768px) {
+  .section { padding: 70px 0; }
+}
+
 @media (max-width: 640px) {
-  .section { padding: 60px 0; }
+  .section { padding: 56px 0; }
   .hero-title { font-size: clamp(48px, 14vw, 80px); }
   .section-title { font-size: 26px; }
   .footer-nav { flex-wrap: wrap; gap: 12px; justify-content: center; }
