@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://suisenvbclub.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/">
-  <link rel="stylesheet" href="css/style.css?v=1773579160">
+  <link rel="stylesheet" href="css/style.css?v=1773581158">
 </head>
 <body>
 
@@ -167,6 +167,20 @@
     </div>
   </section>
 
+  <!-- 試合結果セクション -->
+  <section class="section recent-results-section" id="recent-results-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">RECENT RESULTS</p>
+        <h2 class="section-title">試合結果</h2>
+      </div>
+      <div id="recent-results-list"></div>
+      <div class="section-more">
+        <a href="schedule" class="btn btn-primary">結果一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
   <!-- フッター -->
   <footer class="footer">
     <div class="footer-inner">
@@ -186,7 +200,7 @@
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773579160"></script>
+  <script src="data/players.js?v=1773581158"></script>
   <script src="data/schedule.js"></script>
   <script src="js/main.js"></script>
   <script>
@@ -247,8 +261,10 @@
     // リサイズ時に位置再計算
     window.addEventListener('resize', () => goSlide(current));
 
-    // ネクストマッチ: SCHEDULEデータの最初のupcomingを表示
-    const nextMatch = SCHEDULE.find(s => s.type === 'upcoming');
+    // ネクストマッチ: 結果未入力のうち最も日付が近い試合を表示
+    const nextMatch = SCHEDULE
+      .filter(s => !(s.teams || s.resultSummary))
+      .sort((a,b) => new Date(parseInt(a.year),parseInt(a.month)-1,parseInt(a.day)) - new Date(parseInt(b.year),parseInt(b.month)-1,parseInt(b.day)))[0];
     const nextMatchCard = document.getElementById('next-match-card');
     if (nextMatch) {
       nextMatchCard.innerHTML = `
@@ -266,6 +282,39 @@
         </div>`;
     } else {
       document.getElementById('next-match-section').style.display = 'none';
+    }
+
+    // 試合結果: 結果入力済みの直近3件を表示
+    const recentResults = SCHEDULE
+      .filter(s => s.teams || s.resultSummary)
+      .sort((a,b) => new Date(parseInt(b.year),parseInt(b.month)-1,parseInt(b.day)) - new Date(parseInt(a.year),parseInt(a.month)-1,parseInt(a.day)))
+      .slice(0, 3);
+    const recentResultsList = document.getElementById('recent-results-list');
+    if (recentResults.length > 0) {
+      recentResultsList.innerHTML = recentResults.map(s => {
+        const teamsHtml = s.teams
+          ? s.teams.map(t => `
+              <div class="result-team-row">
+                <span class="result-team-name-top">${t.name}</span>
+                <span class="result-badge-top ${t.result === 'win' ? 'win' : 'lose'}">${t.summary}</span>
+              </div>`).join('')
+          : `<div class="result-team-row"><span class="result-badge-top">${s.resultSummary}</span></div>`;
+        return `
+          <a class="recent-result-card" href="schedule#results">
+            <div class="rr-date">
+              <span class="rr-month">${s.month}</span>
+              <span class="rr-day">${s.day}</span>
+            </div>
+            <div class="rr-info">
+              <p class="rr-tournament">${s.tournament}</p>
+              <p class="rr-place">📍 ${s.place}</p>
+              <div class="rr-teams">${teamsHtml}</div>
+            </div>
+            <div class="rr-arrow">詳細<br>→</div>
+          </a>`;
+      }).join('');
+    } else {
+      document.getElementById('recent-results-section').style.display = 'none';
     }
 
   </script>

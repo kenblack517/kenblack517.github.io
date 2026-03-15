@@ -873,6 +873,105 @@ body {
   gap: 8px;
 }
 
+/* ============================================
+   試合結果セクション（TOPページ）
+   ============================================ */
+a.recent-result-card { text-decoration: none; color: inherit; }
+a.recent-result-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 20px rgba(41, 182, 216, 0.15);
+  transform: translateY(-2px);
+}
+
+.recent-result-card {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  gap: 24px;
+  align-items: start;
+  background: var(--dark);
+  border-radius: 12px;
+  padding: 24px 32px;
+  border: 1px solid rgba(41, 182, 216, 0.15);
+  margin-bottom: 12px;
+}
+
+.rr-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.rr-month {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.rr-day {
+  font-family: var(--font-en);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.rr-tournament {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.rr-place {
+  font-size: 12px;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.rr-teams { display: flex; flex-direction: column; gap: 6px; }
+
+.result-team-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.result-team-name-top {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  min-width: 120px;
+}
+
+.result-badge-top {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.result-badge-top.win  { background: rgba(41,182,216,0.15); color: var(--primary); }
+.result-badge-top.lose { background: rgba(231,76,60,0.1);   color: #e74c3c; }
+.result-badge-top:not(.win):not(.lose) { background: rgba(255,255,255,0.1); color: var(--gray); }
+
+.rr-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.6;
+  padding-left: 16px;
+}
+
 .match-icon { font-size: 16px; }
 
 /* ============================================
@@ -1078,4 +1177,16 @@ body {
   .hero-title { font-size: clamp(48px, 14vw, 80px); }
   .section-title { font-size: 26px; }
   .footer-nav { flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+  /* TOPページ試合結果カード */
+  .recent-result-card {
+    grid-template-columns: 56px 1fr auto;
+    gap: 12px;
+    padding: 16px;
+  }
+  .rr-day { font-size: 26px; }
+  .rr-tournament { font-size: 13px; }
+  .rr-arrow { font-size: 10px; padding-left: 8px; }
+  .result-team-name-top { min-width: 80px; font-size: 12px; }
+  .result-badge-top { font-size: 10px; }
 }

@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://suisenvbclub.com/schedule.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/schedule.html">
-  <link rel="stylesheet" href="css/style.css?v=1773579160">
+  <link rel="stylesheet" href="css/style.css?v=1773581158">
   <link rel="stylesheet" href="css/schedule.css?v=2">
 </head>
 <body>
@@ -53,30 +53,22 @@
   <script src="js/main.js"></script>
   <script>
     function renderSchedule() {
-      const upcoming = SCHEDULE.filter(s => s.type === 'upcoming');
-      const results  = SCHEDULE.filter(s => s.type === 'result');
+      function toDate(s) {
+        return new Date(parseInt(s.year), parseInt(s.month) - 1, parseInt(s.day));
+      }
 
-      function itemHtml(s) {
-        const placeTime = s.time
-          ? `📍 ${s.place} / 🕐 ${s.time}`
-          : `📍 ${s.place}`;
+      function hasResult(s) {
+        return s.teams || s.resultSummary;
+      }
 
-        const scoreHtml = s.score
-          ? `<div class="sch-score">
-               <span class="score ${s.result === 'win' ? 'win' : 'lose'}">${s.score.us}</span>
-               <span class="score-sep">-</span>
-               <span class="score ${s.result === 'win' ? 'lose' : 'win'}">${s.score.them}</span>
-             </div>`
-          : '';
+      const upcoming = SCHEDULE.filter(s => !hasResult(s)).sort((a, b) => toDate(a) - toDate(b));
+      const past     = SCHEDULE.filter(s =>  hasResult(s)).sort((a, b) => toDate(b) - toDate(a));
 
-        const statusHtml = s.type === 'upcoming'
-          ? `<div class="sch-status upcoming-badge">予定</div>`
-          : s.result === 'win'
-            ? `<div class="sch-status win-badge">WIN</div>`
-            : `<div class="sch-status lose-badge">LOSE</div>`;
-
+      // upcoming: 個別カード
+      function upcomingItemHtml(s) {
+        const placeTime = s.time ? `📍 ${s.place} / 🕐 ${s.time}` : `📍 ${s.place}`;
         return `
-          <div class="schedule-item ${s.type === 'upcoming' ? 'upcoming' : 'result'}">
+          <div class="schedule-item upcoming">
             <div class="sch-date">
               <span class="sch-month">${s.month}</span>
               <span class="sch-day">${s.day}</span>
@@ -85,12 +77,11 @@
               <p class="sch-tournament">${s.tournament}</p>
               <p class="sch-place">${placeTime}</p>
             </div>
-            ${scoreHtml}
-            ${statusHtml}
+            <div class="sch-status upcoming-badge">予定</div>
           </div>`;
       }
 
-      // 月ごとにグループ化
+      // upcoming: 月ごとにグループ化
       const monthGroups = [];
       let currentMonth = null;
       upcoming.forEach(s => {
@@ -101,10 +92,106 @@
         monthGroups[monthGroups.length - 1].items.push(s);
       });
 
-      const upcomingHtml = monthGroups.map(group => `
-        <div class="month-separator"><span class="month-separator-label">${group.month}</span></div>
-        <div class="schedule-list">${group.items.map(itemHtml).join('')}</div>
-      `).join('');
+      const upcomingHtml = monthGroups.length > 0
+        ? monthGroups.map(group => `
+            <div class="month-separator"><span class="month-separator-label">${group.month}</span></div>
+            <div class="schedule-list">${group.items.map(upcomingItemHtml).join('')}</div>
+          `).join('')
+        : '<p class="sch-empty">現在予定されている試合はありません。</p>';
+
+      // results: tournamentIdでグループ化 → 大会単位で1カード
+      const resultMap = {};
+      past.forEach(s => {
+        const key = s.tournamentId || s.tournament;
+        if (!resultMap[key]) resultMap[key] = [];
+        resultMap[key].push(s);
+      });
+
+      const resultGroups = Object.values(resultMap).sort((a, b) => {
+        const latestA = Math.max(...a.map(s => toDate(s)));
+        const latestB = Math.max(...b.map(s => toDate(s)));
+        return latestB - latestA;
+      });
+
+      function resultGroupHtml(items, groupId) {
+        items.sort((a, b) => toDate(a) - toDate(b));
+        const first = items[0];
+        const last  = items[items.length - 1];
+        const dateRange = items.length > 1
+          ? `${first.month}${first.day}日 〜 ${last.month}${last.day}日`
+          : `${first.month}${first.day}日`;
+
+        // teamsデータがある場合（複数チーム・詳細あり）
+        if (first.teams) {
+          const teamsHtml = first.teams.map(team => {
+            const badge = team.result === 'win'
+              ? `<span class="sch-status win-badge">${team.summary}</span>`
+              : `<span class="sch-status lose-badge">${team.summary}</span>`;
+
+            const roundsHtml = team.rounds.map(r => `
+              <div class="result-round">
+                <p class="result-round-label">${r.round}</p>
+                <div class="result-matches">
+                  ${r.matches.map(m => `
+                    <div class="result-match">
+                      <span class="match-vs">vs ${m.opponent}</span>
+                      <span class="match-score ${m.result}">${m.score}</span>
+                      <span class="match-label ${m.result}">${m.result === 'win' ? 'WIN' : 'LOSE'}</span>
+                    </div>`).join('')}
+                </div>
+              </div>`).join('');
+
+            return `
+              <div class="result-team">
+                <div class="result-team-header">
+                  <span class="result-team-name">${team.name}</span>
+                  ${badge}
+                </div>
+                <div class="result-rounds">${roundsHtml}</div>
+              </div>`;
+          }).join('');
+
+          return `
+            <div class="schedule-item result result-expandable" data-detail-id="${groupId}">
+              <div class="sch-date">
+                <span class="sch-month">${last.month}</span>
+                <span class="sch-day">${last.day}</span>
+              </div>
+              <div class="sch-info">
+                <p class="sch-tournament">${first.tournament}</p>
+                <p class="sch-place">📍 ${first.place}　📅 ${dateRange}</p>
+              </div>
+              <div class="result-expand-icon">
+                <span class="result-expand-label">試合結果を見る</span>
+                <span class="result-expand-arrow">▼</span>
+              </div>
+            </div>
+            <div class="result-detail" id="detail-${groupId}">
+              ${teamsHtml}
+            </div>`;
+        }
+
+        // 通常（resultSummaryのみ）
+        const summary = first.resultSummary
+          ? `<div class="sch-status result-summary-badge">${first.resultSummary}</div>`
+          : '';
+        return `
+          <div class="schedule-item result">
+            <div class="sch-date">
+              <span class="sch-month">${last.month}</span>
+              <span class="sch-day">${last.day}</span>
+            </div>
+            <div class="sch-info">
+              <p class="sch-tournament">${first.tournament}</p>
+              <p class="sch-place">📅 ${dateRange}</p>
+            </div>
+            ${summary}
+          </div>`;
+      }
+
+      const resultsHtml = resultGroups.length > 0
+        ? `<div class="schedule-list">${resultGroups.map((items, i) => resultGroupHtml(items, i)).join('')}</div>`
+        : '<p class="sch-empty">まだ試合結果はありません。</p>';
 
       document.getElementById('schedule-container').innerHTML = `
         <div class="schedule-block">
@@ -113,15 +200,28 @@
           </h2>
           ${upcomingHtml}
         </div>
-        <div class="schedule-block">
+        <div class="schedule-block" id="results">
           <h2 class="schedule-block-title">
             <span class="block-badge results">RESULTS</span>試合結果
           </h2>
-          <div class="schedule-list">${results.map(itemHtml).join('')}</div>
+          ${resultsHtml}
         </div>`;
     }
 
     renderSchedule();
+
+    document.getElementById('schedule-container').addEventListener('click', e => {
+      const card = e.target.closest('.result-expandable');
+      if (!card) return;
+      const id     = card.dataset.detailId;
+      const detail = document.getElementById('detail-' + id);
+      if (!detail) return;
+      const isOpen = detail.classList.toggle('is-open');
+      const label  = card.querySelector('.result-expand-label');
+      const arrow  = card.querySelector('.result-expand-arrow');
+      if (label) label.textContent = isOpen ? '閉じる' : '試合結果を見る';
+      if (arrow) arrow.textContent = isOpen ? '▲' : '▼';
+    });
   </script>
 </body>
 </html>
