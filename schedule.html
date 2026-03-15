@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://suisenvbclub.com/schedule.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://suisenvbclub.com/schedule.html">
-  <link rel="stylesheet" href="css/style.css?v=1773578998">
+  <link rel="stylesheet" href="css/style.css?v=1773579160">
   <link rel="stylesheet" href="css/schedule.css?v=2">
 </head>
 <body>
@@ -90,12 +90,28 @@
           </div>`;
       }
 
+      // 月ごとにグループ化
+      const monthGroups = [];
+      let currentMonth = null;
+      upcoming.forEach(s => {
+        if (s.month !== currentMonth) {
+          currentMonth = s.month;
+          monthGroups.push({ month: s.month, items: [] });
+        }
+        monthGroups[monthGroups.length - 1].items.push(s);
+      });
+
+      const upcomingHtml = monthGroups.map(group => `
+        <div class="month-separator"><span class="month-separator-label">${group.month}</span></div>
+        <div class="schedule-list">${group.items.map(itemHtml).join('')}</div>
+      `).join('');
+
       document.getElementById('schedule-container').innerHTML = `
         <div class="schedule-block">
           <h2 class="schedule-block-title">
             <span class="block-badge upcoming">UPCOMING</span>今後の試合
           </h2>
-          <div class="schedule-list">${upcoming.map(itemHtml).join('')}</div>
+          ${upcomingHtml}
         </div>
         <div class="schedule-block">
           <h2 class="schedule-block-title">

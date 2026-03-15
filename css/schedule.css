@@ -67,6 +67,25 @@
 .block-badge.upcoming { background: var(--primary); color: white; }
 .block-badge.results  { background: var(--dark); color: white; }
 
+.month-separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gray);
+}
+
+.month-separator::before,
+.month-separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+
 .schedule-list {
   display: flex;
   flex-direction: column;
