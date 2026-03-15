@@ -912,12 +912,49 @@ body {
   color: rgba(136, 146, 164, 0.5);
 }
 
+.footer-sns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-sns a {
+  color: rgba(136, 146, 164, 0.6);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.footer-sns a:hover {
+  color: var(--primary);
+}
+
+.header-sns {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.header-sns a {
+  color: rgba(200, 210, 230, 0.7);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.header-sns a:hover {
+  color: var(--primary);
+}
+
 /* ============================================
    レスポンシブ
    ============================================ */
 @media (max-width: 768px) {
   /* ヘッダー内のnavは非表示 */
   .header .nav { display: none; }
+  .header-sns { display: none; }
 
   /* body直下に移動したnavのスタイル */
   body > .nav {
