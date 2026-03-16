@@ -159,7 +159,7 @@ const PLAYERS = [
     hobby: "カラオケ",
   },
   {
-    num: 0,
+    num: 100,
     name: "西脇 惇平",
     pos: "OH",
     posLabel: "アウトサイドヒッター",
@@ -236,7 +236,7 @@ const PLAYERS = [
     hobby: "キャンプ、家族旅行",
   },
   {
-    num: 0,
+    num: 101,
     name: "中川 響介",
     pos: "MB",
     posLabel: "ミドルブロッカー",
@@ -251,7 +251,7 @@ const PLAYERS = [
     hobby: "散歩",
   },
   {
-    num: 0,
+    num: 102,
     name: "川中 太翔",
     pos: "MB",
     posLabel: "ミドルブロッカー",
@@ -300,7 +300,7 @@ const PLAYERS = [
     hobby: "バレーボールの情報を収集すること",
   },
   {
-    num: 0,
+    num: 103,
     name: "石田 桜大",
     pos: "L",
     posLabel: "リベロ",
