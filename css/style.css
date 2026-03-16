@@ -47,6 +47,18 @@
   font-family: var(--font-en);
 }
 
+/* ============================================
+   英字イタリック
+   ============================================ */
+.section-label,
+.hero-label,
+.page-title,
+.page-hero-label,
+.pos-label-en,
+.block-badge {
+  font-style: italic;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
