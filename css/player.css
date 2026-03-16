@@ -40,6 +40,12 @@
 }
 
 
+.player-hero-content .section-label {
+  font-size: 16px;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
 .player-hero-name {
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 900;

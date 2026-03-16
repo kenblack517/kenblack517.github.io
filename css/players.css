@@ -264,6 +264,20 @@
   text-align: center;
 }
 
+/* スタッフカードは役職名が長い場合があるため高さ可変 */
+.roster-detail:has(.roster-staff-info) {
+  height: auto;
+  min-height: 52px;
+  padding: 8px 14px;
+}
+
+@media (max-width: 640px) {
+  .roster-detail:has(.roster-staff-info) {
+    min-height: 44px;
+    margin-top: -44px;
+  }
+}
+
 .roster-pos {
   display: inline-block;
   font-size: 10px;
