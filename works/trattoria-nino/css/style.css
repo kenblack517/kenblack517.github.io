@@ -1,0 +1,570 @@
+/* ============================================
+   TRATTORIA NINO
+   ============================================ */
+
+:root {
+  --black: #0e0d0b;
+  --dark: #1a1814;
+  --dark-2: #252220;
+  --gold: #c8a96e;
+  --gold-light: #dfc08a;
+  --white: #ffffff;
+  --cream: #f5f0e8;
+  --text-muted: rgba(255,255,255,0.55);
+  --border: rgba(255,255,255,0.1);
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Lato', 'Hiragino Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.8;
+  font-weight: 300;
+  padding-top: 40px;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============================================
+   サンプルバナー
+   ============================================ */
+.sample-banner {
+  background: #2d2d2d;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  font-size: 12px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+/* ============================================
+   ヘッダー
+   ============================================ */
+.header {
+  position: fixed;
+  top: 40px; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  transition: background 0.4s, padding 0.4s;
+}
+
+.header.scrolled {
+  background: rgba(14,13,11,0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+}
+
+.logo-en {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.logo-ja {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--white);
+}
+
+.header-nav {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.header-nav a {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.55);
+  padding: 8px 20px;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.header-nav a:hover { color: var(--gold); }
+
+.header-cta {
+  color: var(--gold) !important;
+  border: 1px solid rgba(200,169,110,0.4) !important;
+  padding: 8px 20px !important;
+  transition: all 0.2s !important;
+}
+
+.header-cta:hover {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+}
+
+/* ============================================
+   ヒーロー
+   ============================================ */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(14,13,11,0.85) 40%, rgba(14,13,11,0.3) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  color: var(--white);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 48px;
+  max-width: 360px;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.3);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(200,169,110,0.6), transparent);
+}
+
+/* ============================================
+   ボタン
+   ============================================ */
+.btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 4px;
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 400;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+  border: 1px solid var(--gold);
+}
+
+.btn-gold:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   セクション共通
+   ============================================ */
+.section { padding: 120px 0; }
+
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-eyebrow.center { justify-content: center; }
+.section-eyebrow.center::before { display: none; }
+.section-eyebrow.light { color: var(--gold); }
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 2px;
+  line-height: 1.4;
+  margin-bottom: 48px;
+}
+
+.section-title em { font-style: italic; color: var(--gold); }
+.section-title.center { text-align: center; }
+
+/* ============================================
+   コンセプト
+   ============================================ */
+.concept { background: var(--dark); }
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.concept-img {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.concept-img img {
+  transition: transform 0.6s ease;
+}
+
+.concept-img:hover img { transform: scale(1.03); }
+
+.concept-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 2.1;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   メニュー
+   ============================================ */
+.menu { background: var(--black); }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.menu-card { overflow: hidden; }
+
+.menu-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.menu-img img {
+  transition: transform 0.5s ease;
+}
+
+.menu-card:hover .menu-img img { transform: scale(1.06); }
+
+.menu-body {
+  background: var(--dark-2);
+  padding: 28px;
+}
+
+.menu-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.menu-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.menu-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.menu-course {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  background: var(--dark-2);
+  padding: 40px 48px;
+  gap: 0;
+}
+
+.course-item { text-align: center; }
+
+.course-name {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.course-price {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.course-divider {
+  width: 1px;
+  height: 60px;
+  background: var(--border);
+}
+
+/* ============================================
+   アクセス
+   ============================================ */
+.access { background: var(--dark); }
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.access-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.access-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.access-table th {
+  text-align: left;
+  padding: 16px 0;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  width: 100px;
+  font-weight: 400;
+}
+
+.access-table td {
+  padding: 16px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.access-map {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* ============================================
+   予約CTA
+   ============================================ */
+.reservation-section {
+  position: relative;
+  padding: 160px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.reservation-img {
+  position: absolute;
+  inset: 0;
+}
+
+.reservation-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14,13,11,0.8);
+}
+
+.reservation-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.reservation-title {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.reservation-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 48px;
+}
+
+.reservation-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   フッター
+   ============================================ */
+.footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 56px 0 32px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.footer-sub {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.footer-nav {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.footer-nav a {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-copy {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.15);
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+/* ============================================
+   レスポンシブ
+   ============================================ */
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .header-nav { display: none; }
+  .section { padding: 80px 0; }
+  .concept-grid { grid-template-columns: 1fr; gap: 40px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-course { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+  .course-divider { width: 40px; height: 1px; margin: 0 auto; }
+  .access-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-nav { flex-wrap: wrap; justify-content: center; }
+}

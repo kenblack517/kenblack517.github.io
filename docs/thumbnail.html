@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>サムネイル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .thumb {
+      width: 1280px;
+      height: 720px;
+      background: linear-gradient(135deg, #1a2a6c 0%, #1565c0 40%, #0288d1 70%, #00acc1 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 背景装飾 */
+    .bg-circle-1 {
+      position: absolute;
+      top: -140px; right: -100px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    }
+    .bg-circle-2 {
+      position: absolute;
+      bottom: -120px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,200,0,0.1) 0%, transparent 70%);
+    }
+    .bg-circle-3 {
+      position: absolute;
+      top: 50%; right: 200px;
+      transform: translateY(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    /* メインコンテンツ */
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 960px;
+      width: 100%;
+      padding: 0 80px;
+    }
+
+    /* バッジ群 */
+    .badges {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      justify-content: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-pro {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: #fff;
+    }
+
+    .badge-star {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+    }
+
+    /* キャッチコピー */
+    .catch {
+      font-size: 68px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    }
+
+    .catch em {
+      font-style: normal;
+      color: #fde68a;
+      position: relative;
+      display: inline-block;
+    }
+
+    .catch em::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #fbbf24, #f97316);
+      border-radius: 2px;
+    }
+
+    /* サブ */
+    .sub-catch {
+      font-size: 20px;
+      color: rgba(255,255,255,0.88);
+      font-weight: 500;
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .sub-catch strong {
+      color: #fde68a;
+    }
+
+    /* 実績バー */
+    .stats {
+      display: flex;
+      gap: 0;
+      margin-bottom: 44px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stat {
+      flex: 1;
+      padding: 18px 24px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: #fde68a;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.5px;
+    }
+
+    /* 価格 */
+    .price-area {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .price-box {
+      background: linear-gradient(135deg, #f97316, #ef4444);
+      border-radius: 12px;
+      padding: 14px 32px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      box-shadow: 0 6px 24px rgba(239,68,68,0.45);
+    }
+
+    .price-from {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .price-num {
+      font-size: 44px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .price-unit {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .price-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    /* 名前タグ */
+    .creator-tag {
+      position: absolute;
+      bottom: 32px;
+      right: 56px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .creator-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f97316, #fbbf24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.4);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .creator-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .creator-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .creator-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+<div class="thumb">
+  <div class="bg-grid"></div>
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+  <div class="bg-circle-3"></div>
+
+  <div class="content">
+    <div class="badges">
+      <span class="badge badge-pro">⚡ PRO CREATOR</span>
+      <span class="badge badge-star">★ 満足度 100%</span>
+    </div>
+
+    <h1 class="catch">
+      集客・売上につながる<br>
+      <em>HP制作</em>、おまかせください
+    </h1>
+
+    <p class="sub-catch">
+      相談〜公開まで<strong>全部ひとりで完結</strong>。スマホ対応・SEO・LINE予約まで込み
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">制作実績</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">お客様満足度</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">最短1週間</div>
+        <div class="stat-label">納品スピード</div>
+      </div>
+    </div>
+
+    <div class="price-area">
+      <div class="price-box">
+        <span class="price-from">LP</span>
+        <span class="price-num">¥30,000</span>
+        <span class="price-unit">〜（税込）</span>
+      </div>
+      <p class="price-note">
+        ホームページ ¥50,000〜<br>
+        無料修正3回・スマホ対応込み
+      </p>
+    </div>
+  </div>
+
+  <div class="creator-tag">
+    <div class="creator-avatar">K</div>
+    <div class="creator-info">
+      <span class="creator-name">KEN</span>
+      <span class="creator-sub">Web Creator / Osaka</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web制作業務委託契約書</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #1a1a1a;
+      background: #f0f0f0;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20mm 18mm;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    }
+
+    /* ヘッダー */
+    .doc-header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .doc-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      margin-bottom: 6px;
+    }
+
+    .doc-no {
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+    /* 当事者情報 */
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .party-box {
+      border: 1px solid #ddd;
+      padding: 16px;
+    }
+
+    .party-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #e85d04;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .party-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .party-detail {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .fill {
+      display: inline-block;
+      min-width: 160px;
+      border-bottom: 1px solid #999;
+      color: #999;
+      font-size: 11px;
+    }
+
+    /* 合意文 */
+    .agreement-intro {
+      font-size: 12px;
+      line-height: 2;
+      margin-bottom: 28px;
+      padding: 16px;
+      background: #fafafa;
+      border-left: 3px solid #e85d04;
+    }
+
+    /* 条文 */
+    .clause {
+      margin-bottom: 24px;
+    }
+
+    .clause-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding: 4px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .clause-body {
+      font-size: 12px;
+      line-height: 2;
+      color: #2a2a2a;
+    }
+
+    .clause-body ol {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+
+    .clause-body ol li {
+      margin-bottom: 6px;
+    }
+
+    .clause-body ul {
+      padding-left: 20px;
+      margin-top: 6px;
+      list-style: disc;
+    }
+
+    .clause-body ul li {
+      margin-bottom: 4px;
+    }
+
+    /* 署名欄 */
+    .sign-section {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+    }
+
+    .sign-date {
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 32px;
+    }
+
+    .sign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .sign-box {
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
+
+    .sign-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #e85d04;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .sign-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 12px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .sign-line span:last-child {
+      border-bottom: 1px solid #999;
+      min-width: 120px;
+      height: 20px;
+    }
+
+    .hanko-area {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .hanko-circle {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #aaa;
+    }
+
+    /* 印刷 */
+    @media print {
+      body { background: #fff; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        padding: 15mm 15mm;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <h1 class="doc-title">Web制作業務委託契約書</h1>
+    <p class="doc-no">契約番号：<span class="fill">　　　　　　　</span>　　発行日：<span class="fill">　　　年　　月　　日</span></p>
+  </div>
+
+  <div class="parties">
+    <div class="party-box">
+      <p class="party-label">甲（クライアント）</p>
+      <p class="party-name"><span class="fill">　　　　　　　　　　</span></p>
+      <p class="party-detail">
+        住所：<span class="fill">　　　　　　　　　　</span><br>
+        電話：<span class="fill">　　　　　　　　　　</span><br>
+        メール：<span class="fill">　　　　　　　　　　</span>
+      </p>
+    </div>
+    <div class="party-box">
+      <p class="party-label">乙（制作者）</p>
+      <p class="party-name">KEN</p>
+      <p class="party-detail">
+        住所：大阪府<br>
+        メール：matuyama517@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <div class="agreement-intro">
+    甲および乙は、以下の条項に基づき、Web制作業務委託契約（以下「本契約」）を締結する。
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第1条（業務の委託）</h2>
+    <div class="clause-body">
+      甲は乙に対し、下記のWebサイト制作業務（以下「本業務」）を委託し、乙はこれを受託する。
+      <ul>
+        <li>サイト名：<span class="fill">　　　　　　　　　　　　　　　</span></li>
+        <li>制作内容：<span class="fill">　　　　　　　　　　　　　　　</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第2条（制作範囲）</h2>
+    <div class="clause-body">
+      本業務の制作範囲は、甲乙間で別途取り交わす見積書に記載のとおりとする。見積書に記載のない追加作業が発生した場合は、甲乙協議のうえ別途費用を定める。
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第3条（料金および支払方法）</h2>
+    <div class="clause-body">
+      <ol>
+        <li>制作費用は、別途取り交わす見積書に記載の金額（消費税込）とする。</li>
+        <li>支払方法は以下のとおりとする。
+          <ul>
+            <li>着手金：契約締結後7日以内に制作費用の50%を支払う。</li>
+            <li>残金：納品完了後14日以内に残額50%を支払う。</li>
+          </ul>
+        </li>
+        <li>支払いは乙の指定する銀行口座への振込とし、振込手数料は甲の負担とする。</li>
+        <li>ドメイン・サーバー費用など第三者サービスの実費は、別途甲が直接負担する。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第4条（納期）</h2>
+    <div class="clause-body">
+      <ol>
+        <li>納期は、甲から必要素材（テキスト・画像・ロゴ等）がすべて揃った時点から起算して、別途見積書に記載の日数とする。</li>
+        <li>甲の都合による素材提供の遅延が生じた場合、納期は遅延日数分延長されるものとする。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第5条（修正・変更）</h2>
+    <div class="clause-body">
+      <ol>
+        <li>本業務には無料修正を3回まで含む。修正1回とは、1度のフィードバックに対する対応を指す。</li>
+        <li>無料修正回数を超えた修正、または制作開始後の仕様変更については、内容に応じて別途費用が発生する。</li>
+        <li>制作開始後の大幅な方向転換（デザインコンセプトの変更等）は、追加費用の対象とする。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第6条（著作権）</h2>
+    <div class="clause-body">
+      <ol>
+        <li>制作物の著作権は、制作費用の全額が支払われた時点で乙から甲に移転する。</li>
+        <li>乙は、甲の承諾を得た上で、本制作物を自身のポートフォリオ・実績紹介に使用できる。</li>
+        <li>甲が提供した素材（写真・文章・ロゴ等）の著作権は甲に帰属し、甲はその使用について必要な権利を有することを保証する。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第7条（秘密保持）</h2>
+    <div class="clause-body">
+      甲および乙は、本契約を通じて知り得た相手方の業務上の秘密情報を、相手方の書面による事前承諾なく第三者に開示・漏洩してはならない。本条の義務は契約終了後も存続する。
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第8条（個人情報の取扱い）</h2>
+    <div class="clause-body">
+      乙は、本業務遂行のために取得した甲の個人情報を、業務目的以外に使用せず、適切に管理する。
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第9条（契約の解除・キャンセル）</h2>
+    <div class="clause-body">
+      <ol>
+        <li>甲が本契約を解除する場合、以下のキャンセル料が発生する。
+          <ul>
+            <li>制作着手前：着手金の全額を返金する。</li>
+            <li>制作着手後〜50%未満の進行：着手金相当額をキャンセル料として甲が負担する。</li>
+            <li>制作50%以上の進行後：制作費用の全額をキャンセル料として甲が負担する。</li>
+          </ul>
+        </li>
+        <li>乙の都合による解除の場合、乙は受領済みの着手金を全額返金する。</li>
+        <li>甲が支払期日を30日以上経過しても支払いを行わない場合、乙は本契約を解除できる。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第10条（免責事項）</h2>
+    <div class="clause-body">
+      <ol>
+        <li>乙は、本制作物による検索順位・アクセス数・売上等の成果について保証しない。</li>
+        <li>乙は、甲が提供した素材の著作権・肖像権等に関するトラブルについて責任を負わない。</li>
+        <li>乙の責に帰さない事由（天災・通信障害・サービス提供者の障害等）による損害について、乙は責任を負わない。</li>
+        <li>乙の賠償責任は、いかなる場合も本契約の制作費用を上限とする。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第11条（反社会的勢力の排除）</h2>
+    <div class="clause-body">
+      甲および乙は、現在および将来にわたって、暴力団その他反社会的勢力に該当しないことを表明・保証する。いずれかが該当すると判明した場合、相手方は即時に本契約を解除できる。
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第12条（協議）</h2>
+    <div class="clause-body">
+      本契約に定めのない事項または疑義が生じた場合、甲乙は誠意をもって協議し解決する。
+    </div>
+  </div>
+
+  <div class="clause">
+    <h2 class="clause-title">第13条（管轄裁判所）</h2>
+    <div class="clause-body">
+      本契約に関する紛争については、大阪地方裁判所を第一審の専属的合意管轄裁判所とする。
+    </div>
+  </div>
+
+  <div class="sign-section">
+    <p class="sign-date">本契約の成立を証するため、本書2通を作成し、甲乙各1通を保有する。</p>
+    <div class="sign-grid">
+      <div class="sign-box">
+        <p class="sign-label">甲（クライアント）</p>
+        <div class="sign-line"><span>氏名・会社名</span><span></span></div>
+        <div class="sign-line"><span>住所</span><span></span></div>
+        <div class="sign-line"><span>日付</span><span>　　　年　　月　　日</span></div>
+        <div class="hanko-area">
+          <span>印</span>
+          <div class="hanko-circle">印鑑</div>
+        </div>
+      </div>
+      <div class="sign-box">
+        <p class="sign-label">乙（制作者）</p>
+        <div class="sign-line"><span>氏名</span><span>KEN</span></div>
+        <div class="sign-line"><span>住所</span><span>大阪府</span></div>
+        <div class="sign-line"><span>日付</span><span>　　　年　　月　　日</span></div>
+        <div class="hanko-area">
+          <span>印</span>
+          <div class="hanko-circle">印鑑</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
