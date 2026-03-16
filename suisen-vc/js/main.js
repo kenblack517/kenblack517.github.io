@@ -131,14 +131,14 @@ if (hamburger && nav) {
 }
 
 // ============================================
-// スクロールアニメーション
+// スクロールアニメーション（共通フェードアップ）
 // ============================================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
       entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target); // 表示済みは監視解除
+      observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
@@ -149,3 +149,34 @@ document.querySelectorAll('.news-item, .player-card, .roster-card, .schedule-ite
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
+
+// ============================================
+// アニメーション C: カウントアップ
+// ============================================
+function countUp(el) {
+  const text = el.textContent.trim();
+  const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+  const suffix = text.replace(/[0-9.]/g, '').replace(/-/g, '');
+  if (isNaN(num) || num <= 0) return;
+  const duration = 1500;
+  const start = performance.now();
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * num) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      countUp(entry.target);
+      countObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-num, .big-num').forEach(el => countObserver.observe(el));
+
