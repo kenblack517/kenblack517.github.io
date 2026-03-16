@@ -151,6 +151,14 @@ document.querySelectorAll('.news-item, .player-card, .roster-card, .schedule-ite
 });
 
 // ============================================
+// 設立年数を自動計算
+// ============================================
+document.querySelectorAll('[data-since]').forEach(el => {
+  const since = parseInt(el.dataset.since);
+  el.textContent = new Date().getFullYear() - since;
+});
+
+// ============================================
 // アニメーション C: カウントアップ
 // ============================================
 function countUp(el) {
