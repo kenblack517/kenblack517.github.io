@@ -3,434 +3,398 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KEN | Web制作・ホームページ作成</title>
-  <meta name="description" content="ホームページの作り方がわからない、ドメイン・サーバー設定が面倒、どこに頼めばいいかわからない。そのお悩み、全部まるごとお任せください。">
-  <meta property="og:title" content="KEN | Web制作">
-  <meta property="og:description" content="ホームページのことで困ったら、まるごとKENへ。相談・見積もり無料。">
+  <title>SUISEN Volleyball Club | 昼も夜も日本一</title>
+  <meta name="description" content="SUISEN Volleyball Clubは東京都を拠点に活動する社会人男子バレーボールチームです。「昼も夜も日本一」を合言葉に、クラブカップ優勝・黒鷲旗出場など全国の舞台で戦っています。">
+  <meta name="keywords" content="SUISEN,スイセン,バレーボール,社会人,東京,クラブチーム,男子バレー">
+  <meta property="og:title" content="SUISEN Volleyball Club | 昼も夜も日本一">
+  <meta property="og:description" content="東京都を拠点に活動する社会人男子バレーボールチーム。クラブカップ優勝・黒鷲旗出場の実績。">
+  <meta property="og:url" content="https://suisenvbclub.com/">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://suisenvbclub.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=1773655347">
+  <link rel="stylesheet" href="css/news.css?v=1">
 </head>
 <body>
 
-  <!-- ヘッダー -->
-  <header class="header" id="header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="#" class="header-logo">KEN.</a>
-        <nav>
-          <ul class="header-nav">
-            <li><a href="#worries">お悩み</a></li>
-            <li><a href="#flow">依頼の流れ</a></li>
-            <li><a href="#works">実績</a></li>
-            <li><a href="#contact" class="header-nav-cta">無料相談</a></li>
-          </ul>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="メニュー">
-          <span></span><span></span><span></span>
-        </button>
+  <!-- スプラッシュスクリーン -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-ball">🏐</div>
+      <div class="splash-logo">
+        <span class="splash-logo-text">SUISEN</span>
+        <span class="splash-logo-sub">VOLLEYBALL CLUB</span>
       </div>
+      <div class="splash-line"></div>
     </div>
-  </header>
-
-  <!-- モバイルメニュー -->
-  <div class="mobile-menu" id="mobileMenu">
-    <ul class="mobile-nav">
-      <li><a href="#worries">お悩み</a></li>
-      <li><a href="#flow">依頼の流れ</a></li>
-      <li><a href="#works">実績</a></li>
-      <li><a href="#faq">よくある質問</a></li>
-      <li><a href="#contact" class="mobile-nav-cta">無料相談（無料）</a></li>
-    </ul>
   </div>
 
-  <!-- フローティングCTA -->
-  <a href="#contact" class="floating-cta" id="floatingCta">
-    <span>今すぐ無料相談</span>
-  </a>
+  <script src="js/header.js"></script>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-bg"></div>
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <!-- スライドショー背景 -->
+    <div class="hero-slides">
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    <!-- オーバーレイ -->
+    <div class="hero-overlay"></div>
+    <!-- 装飾ライン -->
+    <div class="hero-deco"></div>
+    <!-- スライドインジケーター -->
+    <div class="hero-indicators">
+      <div class="hero-dot active" onclick="goToSlide(0)"></div>
+      <div class="hero-dot" onclick="goToSlide(1)"></div>
+      <div class="hero-dot" onclick="goToSlide(2)"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-label">SINCE 2020 — SUISEN VOLLEYBALL CLUB</p>
+      <h1 class="hero-title">SUISEN</h1>
+      <p class="hero-desc">勝利への情熱を、コートで証明する。</p>
+      <div class="hero-buttons">
+        <a href="players" class="btn btn-primary">PLAYERS</a>
+        <a href="schedule" class="btn btn-outline">SCHEDULE</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- スローガンセクション -->
+  <section class="slogan-section" id="slogan-section">
+    <div class="slogan-inner">
+      <div class="slogan-deco-line"></div>
+      <p class="slogan-label">OUR MOTTO</p>
+      <h2 class="slogan-text">
+        <span class="slogan-line-wrap"><span class="slogan-line">昼も夜も</span></span>
+        <span class="slogan-line-wrap"><span class="slogan-line">日本一</span></span>
+      </h2>
+      <div class="slogan-deco-line-bottom"></div>
+      <p class="slogan-en">STRIVE FOR THE BEST, DAY AND NIGHT</p>
+    </div>
+  </section>
+
+  <!-- ニュースセクション（非表示中） -->
+  <!--
+  <section class="section news-section">
     <div class="container">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <p class="hero-eyebrow">WEB CREATOR / KEN</p>
-          <h1 class="hero-title">
-            ホームページって、<br>
-            <span>どこから頼めば</span><br>
-            いいの？
-          </h1>
-          <p class="hero-desc">
-            そのお悩み、全部まるごとお任せください。<br>
-            ドメイン取得・サーバー設定から公開まで、<br>
-            KENがすべて対応します。
-          </p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">まずは無料相談</a>
-            <a href="#works" class="btn btn-ghost">制作実績を見る</a>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="hero-photo">
-            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80&auto=format&fit=crop" alt="Web制作イメージ">
-          </div>
-        </div>
+      <div class="section-header">
+        <p class="section-label">LATEST NEWS</p>
+        <h2 class="section-title">最新情報</h2>
+      </div>
+      <div class="news-list">
+        <article class="news-item">
+          <span class="news-date">2026.03.14</span>
+          <span class="news-tag">試合結果</span>
+          <p class="news-text">春季リーグ 第3戦 vs 東都クラブ ● 3-1 勝利</p>
+        </article>
+        <article class="news-item">
+          <span class="news-date">2026.03.08</span>
+          <span class="news-tag">お知らせ</span>
+          <p class="news-text">2026年度 春季リーグ スケジュールを公開しました</p>
+        </article>
+        <article class="news-item">
+          <span class="news-date">2026.02.22</span>
+          <span class="news-tag">試合結果</span>
+          <p class="news-text">練習試合 vs 北星バレーボールクラブ ● 3-0 勝利</p>
+        </article>
+        <article class="news-item">
+          <span class="news-date">2026.02.01</span>
+          <span class="news-tag">お知らせ</span>
+          <p class="news-text">2026年度の活動を開始しました</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- お知らせセクション -->
+  <section class="section top-news-section" id="top-news-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">INFORMATION</p>
+        <h2 class="section-title">お知らせ</h2>
+      </div>
+      <div id="top-news-list" class="news-list-page"></div>
+      <div class="section-more">
+        <a href="news" class="btn btn-primary">お知らせ一覧</a>
       </div>
     </div>
   </section>
 
-  <!-- お悩みセクション -->
-  <section class="section worries" id="worries">
+  <!-- 次の試合 -->
+  <section class="section next-match-section" id="next-match-section">
     <div class="container">
-      <p class="section-label">WORRIES</p>
-      <h2 class="section-title light">こんなお悩み、<br>ありませんか？</h2>
-      <div class="worries-grid">
-        <div class="worry-card anim">
-          <span class="worry-check">✓</span>
-          <p>どんなサイトが必要か<strong>わからない</strong></p>
-        </div>
-        <div class="worry-card anim">
-          <span class="worry-check">✓</span>
-          <p>ドメイン・サーバーって<strong>何？設定が面倒</strong></p>
-        </div>
-        <div class="worry-card anim">
-          <span class="worry-check">✓</span>
-          <p>費用が<strong>いくらかかるか不安</strong></p>
-        </div>
-        <div class="worry-card anim">
-          <span class="worry-check">✓</span>
-          <p>作った後の<strong>更新・管理が心配</strong></p>
-        </div>
-        <div class="worry-card anim">
-          <span class="worry-check">✓</span>
-          <p>業者に頼むのは<strong>敷居が高い</strong></p>
-        </div>
-        <div class="worry-card anim">
-          <span class="worry-check">✓</span>
-          <p>そもそも<strong>何から始めればいいかわからない</strong></p>
-        </div>
+      <div class="section-header">
+        <p class="section-label">NEXT MATCH</p>
+        <h2 class="section-title">次の試合</h2>
       </div>
-      <div class="worries-answer">
-        <p>全部、<strong>KENに任せてください。</strong></p>
+      <div id="next-match-card"></div>
+      <div class="section-more">
+        <a href="schedule" class="btn btn-primary">スケジュール一覧</a>
       </div>
     </div>
   </section>
 
-  <!-- 解決策 -->
-  <section class="section solution" id="solution">
+  <!-- 試合結果セクション -->
+  <section class="section recent-results-section" id="recent-results-section">
     <div class="container">
-      <p class="section-label">SOLUTION</p>
-      <h2 class="section-title">相談から公開まで、<br>まるごとお任せ</h2>
-      <div class="solution-grid">
-        <div class="solution-item anim">
-          <div class="solution-icon">💬</div>
-          <h3>「なんとなく」でOK</h3>
-          <p>「こんな雰囲気のサイトが欲しい」というイメージだけで大丈夫。どんなサイトが必要か、一緒に考えます。何から話せばいいかわからない方でも丁寧にヒアリングします。</p>
-        </div>
-        <div class="solution-item anim">
-          <div class="solution-icon">🔧</div>
-          <h3>技術的なことは全部対応</h3>
-          <p>ドメイン取得・サーバー設定・SSL証明書・メールアドレス設定まで代わりに対応。難しいことは全部お任せください。公開後の管理サポートも承ります。</p>
-        </div>
-        <div class="solution-item anim">
-          <div class="solution-icon">📱</div>
-          <h3>スマホ対応・SEO込み</h3>
-          <p>スマートフォン対応とGoogle向けのSEO基本設定は標準で実施。Googleアナリティクスの設定もオプションで対応。集客まで一緒に考えます。</p>
-        </div>
+      <div class="section-header">
+        <p class="section-label">RECENT RESULTS</p>
+        <h2 class="section-title">試合結果</h2>
       </div>
-      <div class="solution-stats">
-        <div class="solution-stat anim">
-          <div class="stat-num">1<span>週間〜</span></div>
-          <div class="stat-label">最短納期（素材揃い次第）</div>
-        </div>
-        <div class="solution-stat anim">
-          <div class="stat-num">0<span>円</span></div>
-          <div class="stat-label">相談・見積もり料金</div>
-        </div>
+      <div id="recent-results-list"></div>
+      <div class="section-more">
+        <a href="schedule" class="btn btn-primary">結果一覧を見る</a>
       </div>
     </div>
   </section>
 
-  <!-- 依頼の流れ -->
-  <section class="section flow" id="flow">
+  <!-- チーム紹介セクション -->
+  <section class="section about-section">
     <div class="container">
-      <p class="section-label">FLOW</p>
-      <h2 class="section-title light">依頼の流れ</h2>
-      <div class="flow-steps">
-        <div class="flow-step anim">
-          <div class="flow-num">01</div>
-          <h3 class="flow-title">無料相談</h3>
-          <p class="flow-desc">メールで気軽に相談。「こんなサイトが欲しい」「予算はこのくらい」それだけでOKです。</p>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step anim">
-          <div class="flow-num">02</div>
-          <h3 class="flow-title">ヒアリング・提案</h3>
-          <p class="flow-desc">業種・ターゲット・ご予算をもとに、最適なプランと見積もりをご提案します。</p>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step anim">
-          <div class="flow-num">03</div>
-          <h3 class="flow-title">制作</h3>
-          <p class="flow-desc">素材が揃い次第、最短1週間で制作。進捗は随時共有しながら進めます。</p>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step anim">
-          <div class="flow-num">04</div>
-          <h3 class="flow-title">公開・納品</h3>
-          <p class="flow-desc">ドメイン・サーバー設定も含め、すべてセットアップしてから納品します。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WORKS -->
-  <section class="section" id="works">
-    <div class="container">
-      <p class="section-label">WORKS</p>
-      <h2 class="section-title" style="margin-bottom:48px">制作実績</h2>
-      <div class="works-grid">
-
-        <div class="work-card anim">
-          <div class="work-thumb">
-            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=700&q=80&auto=format&fit=crop" alt="SUISEN Volleyball Club">
-            <span class="work-thumb-label">SUISEN</span>
-          </div>
-          <div class="work-body">
-            <div class="work-tags">
-              <span class="work-tag">HTML / CSS / JS</span>
-              <span class="work-tag">RESPONSIVE</span>
-              <span class="work-tag">SEO</span>
-            </div>
-            <h3 class="work-title">SUISEN Volleyball Club</h3>
-            <p class="work-desc">
-              社会人バレーボールチームのオフィシャルサイト。選手紹介・試合日程・ニュース機能を実装。スマホ対応・SEO対策済み。
-            </p>
-            <a href="https://suisenvbclub.com" target="_blank" rel="noopener" class="work-link">
-              サイトを見る →
-            </a>
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-image-placeholder">
+            <div class="volleyball-icon">🏐</div>
           </div>
         </div>
-
-        <div class="work-card anim">
-          <div class="work-thumb">
-            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&auto=format&fit=crop" alt="中野税理士事務所">
-            <span class="work-thumb-label">TAX</span>
-          </div>
-          <div class="work-body">
-            <div class="work-tags">
-              <span class="work-tag">HTML / CSS / JS</span>
-              <span class="work-tag">RESPONSIVE</span>
-              <span class="work-tag">LP</span>
-            </div>
-            <h3 class="work-title">中野税理士事務所</h3>
-            <p class="work-desc">
-              税理士事務所のコーポレートサイト。ネイビー×ゴールドの信頼感あるデザイン。サービス料金・事務所概要・無料相談CTAを実装。
-            </p>
-            <a href="works/nakano-tax/" target="_blank" rel="noopener" class="work-link">
-              サイトを見る →
-            </a>
-          </div>
-        </div>
-
-        <div class="work-card anim">
-          <div class="work-thumb">
-            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=700&q=80&auto=format&fit=crop" alt="LUNA Natural Skincare">
-            <span class="work-thumb-label">LUNA</span>
-          </div>
-          <div class="work-body">
-            <div class="work-tags">
-              <span class="work-tag">HTML / CSS / JS</span>
-              <span class="work-tag">EC SITE</span>
-              <span class="work-tag">RESPONSIVE</span>
-            </div>
-            <h3 class="work-title">LUNA Natural Skincare</h3>
-            <p class="work-desc">
-              コスメブランドのECサイト。クリーム×ブラウンのナチュラルデザイン。商品一覧・成分こだわり・カートCTAを実装。
-            </p>
-            <a href="works/luna-cosmetics/" target="_blank" rel="noopener" class="work-link">
-              サイトを見る →
-            </a>
-          </div>
-        </div>
-
-        <div class="work-card anim">
-          <div class="work-thumb work-thumb-dark">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80&auto=format&fit=crop" alt="TRATTORIA NINO">
-            <span class="work-thumb-label">NINO</span>
-          </div>
-          <div class="work-body">
-            <div class="work-tags">
-              <span class="work-tag">HTML / CSS / JS</span>
-              <span class="work-tag">RESTAURANT</span>
-              <span class="work-tag">RESPONSIVE</span>
-            </div>
-            <h3 class="work-title">TRATTORIA NINO</h3>
-            <p class="work-desc">
-              中目黒の隠れ家イタリアン。ダーク×ゴールドの上質なデザイン。Unsplash実写真を活用したリッチな演出。
-            </p>
-            <a href="works/trattoria-nino/" target="_blank" rel="noopener" class="work-link">
-              サイトを見る →
-            </a>
-          </div>
-        </div>
-
-        <div class="work-card anim">
-          <div class="work-thumb work-thumb-teal">
-            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=700&q=80&auto=format&fit=crop" alt="からだ整体院">
-            <span class="work-thumb-label">整体</span>
-          </div>
-          <div class="work-body">
-            <div class="work-tags">
-              <span class="work-tag">HTML / CSS / JS</span>
-              <span class="work-tag">CLINIC</span>
-              <span class="work-tag">RESPONSIVE</span>
-            </div>
-            <h3 class="work-title">からだ整体院</h3>
-            <p class="work-desc">
-              渋谷・恵比寿の整体院。清潔感あるホワイト×ティールデザイン。初回限定料金・施術の流れ・予約CTAを実装。
-            </p>
-            <a href="works/karada-seitai/" target="_blank" rel="noopener" class="work-link">
-              サイトを見る →
-            </a>
-          </div>
-        </div>
-
-        <div class="work-card anim">
-          <div class="work-thumb work-thumb-pink">
-            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80&auto=format&fit=crop" alt="Atelier Hair MOMO">
-            <span class="work-thumb-label">美容室</span>
-          </div>
-          <div class="work-body">
-            <div class="work-tags">
-              <span class="work-tag">HTML / CSS / JS</span>
-              <span class="work-tag">SALON</span>
-              <span class="work-tag">RESPONSIVE</span>
-            </div>
-            <h3 class="work-title">Atelier Hair MOMO</h3>
-            <p class="work-desc">
-              吹田市の1人経営美容室。ベージュ×ダスティピンクのナチュラルデザイン。LINE予約導線・メニュー・スタイリスト紹介・Instagramグリッドを実装。
-            </p>
-            <a href="works/atelier-momo/" target="_blank" rel="noopener" class="work-link">
-              サイトを見る →
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about-strip" id="about">
-    <div class="container">
-      <div class="about-inner">
-        <div class="about-text-block">
-          <p class="section-label">ABOUT</p>
-          <h2 class="section-title light">KENについて</h2>
+        <div class="about-content">
+          <p class="section-label">ABOUT US</p>
+          <h2 class="section-title">チームについて</h2>
           <p class="about-text">
-            AIを活用しながら、デザインと言葉は自分の目で仕上げています。<strong>個人経営の方に寄り添った、顔の見えるWeb制作</strong>を。<br><br>
-            美容室・整体院・飲食店・士業など、個人事業主・小規模事業者の集客サイトを得意としています。「何から頼めばいいかわからない」という方でも丁寧にヒアリングしながら進めます。
+            SUISEN Volleyball Clubは、バレーボールへの情熱を持つ社会人メンバーで構成されたチームです。
+            「昼も夜も日本一」のスローガンのもと、日々の練習から試合まで全力で取り組んでいます。
           </p>
-          <div class="skills-list">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">Shopify</span>
-            <span class="skill-tag">Responsive Design</span>
-            <span class="skill-tag">SEO対策</span>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num" id="top-member-count">-</span>
+              <span class="stat-label">MEMBERS</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-since="2020">6</span>
+              <span class="stat-label">YEARS / SINCE 2020</span>
+            </div>
+          </div>
+          <div style="margin-top: 40px;">
+            <a href="about" class="btn btn-primary">チームの詳細を見る →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section faq" id="faq">
+  <!-- 選手ピックアップ（スライダー） -->
+  <section class="section players-section">
     <div class="container">
-      <p class="section-label">FAQ</p>
-      <h2 class="section-title">よくある質問</h2>
-      <div class="faq-grid">
-
-        <div class="faq-item anim">
-          <p class="faq-q">写真や文章は自分で用意が必要ですか？</p>
-          <p class="faq-a">はい、写真・文章・ロゴなどの素材はお客さまにご準備いただいています。「何を用意すればいいかわからない」という方には、必要な素材リストをお渡しして一緒に準備を進めます。なお「最短1週間」の納期は、素材が揃った時点からのカウントです。</p>
-        </div>
-
-        <div class="faq-item anim">
-          <p class="faq-q">修正はどこまでお願いできますか？</p>
-          <p class="faq-a">各プランに修正3回まで含まれます。「なんか違う」という感覚的なご意見も大歓迎です。それ以上の修正や大幅な方向転換が生じた場合は、別途ご相談ください。</p>
-        </div>
-
-        <div class="faq-item anim">
-          <p class="faq-q">予約システムや決済機能はつけられますか？</p>
-          <p class="faq-a">要件によって対応可能です。Shopifyを使ったECサイトや、外部予約サービスの埋め込みなど対応実績があります。どんな機能が必要かをお気軽にご相談ください。</p>
-        </div>
-
-        <div class="faq-item anim">
-          <p class="faq-q">SEOで検索上位に表示されますか？</p>
-          <p class="faq-a">meta情報・サイトマップ・モバイル対応など、基本的なSEO設定は全プランに含まれます。ただし検索順位の保証はできません。Googleのアルゴリズムは定期的に変わるため、継続的なコンテンツ更新が最も効果的です。</p>
-        </div>
-
-        <div class="faq-item anim">
-          <p class="faq-q">他社で作ったサイトのリニューアルはできますか？</p>
-          <p class="faq-a">リニューアル（作り直し）は通常通りお受けしています。既存サイトへの部分的な修正・追加については、コードの状態を確認してからお見積もりになります。まずはご相談ください。</p>
-        </div>
-
-        <div class="faq-item anim">
-          <p class="faq-q">ドメインやサーバーの費用は毎年かかりますか？</p>
-          <p class="faq-a">はい、ドメイン（年間¥1,000〜2,000程度）とサーバー（月¥1,000〜1,500程度）は継続的に費用がかかります。これらはKENへの制作費とは別の実費です。ご契約前にきちんとご説明しますのでご安心ください。</p>
-        </div>
-
+      <div class="section-header">
+        <p class="section-label">OUR PLAYERS</p>
+        <h2 class="section-title">選手紹介</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <p class="section-label">CONTACT</p>
-        <h2 class="section-title" style="margin-bottom:16px">まずは無料相談から</h2>
-        <div class="price-section">
-          <p class="price-section-label">PLAN</p>
-          <div class="price-hint">
-            <span>LP <strong>¥50,000〜</strong></span>
-            <span>コーポレート <strong>¥100,000〜</strong></span>
-            <span>保守・運用 <strong>¥8,000〜/月</strong></span>
+      <div class="player-slider-wrap">
+        <div class="player-slider-track">
+          <div class="player-slider" id="playerSlider">
+            <!-- JSで生成 -->
           </div>
-
-          <div class="price-included">
-            <span class="price-included-label">全部込み</span>
-            <span>スマホ対応</span>
-            <span>SEO基本設定</span>
-            <span>ドメイン・サーバー設定</span>
-            <span>Google Analytics設定</span>
-            <span>納品後1週間サポート</span>
-          </div>
-
-          <p class="price-note" style="margin-top:12px; font-size:0.85rem; color:#888;">※ドメイン・サーバーの実費（年間¥2,000〜程度）は別途かかります。詳細はご相談ください。</p>
         </div>
-        <p class="contact-desc">
-          「こんなサイト作りたい」「予算はどのくらいかかる？」<br>
-          どんな小さなことでもお気軽にご連絡ください。<br>
-          相談・見積もりは無料です。
-        </p>
-        <a href="mailto:matuyama517@gmail.com" class="btn btn-primary">メールで相談する</a>
-
+        <button class="slider-btn slider-prev" id="sliderPrev">&#8592;</button>
+        <button class="slider-btn slider-next" id="sliderNext">&#8594;</button>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+      <div class="section-more">
+        <a href="players" class="btn btn-primary">全選手を見る</a>
       </div>
     </div>
   </section>
 
   <!-- フッター -->
   <footer class="footer">
-    <p class="footer-logo">KEN.</p>
-    <p class="footer-copy">&copy; 2026 KEN. All Rights Reserved.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text">SUISEN</span>
+        <span class="logo-sub">VOLLEYBALL CLUB</span>
+      </div>
+      <p class="footer-slogan">昼も夜も日本一</p>
+      <nav class="footer-nav">
+        <a href="./">HOME</a>
+        <a href="about">ABOUT</a>
+        <a href="players">PLAYERS</a>
+        <a href="schedule">SCHEDULE</a>
+        <a href="news">NEWS</a>
+        <a href="contact">CONTACT</a>
+      </nav>
+      <div class="footer-sns"></div>
+      <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
+    </div>
   </footer>
 
+  <script>
+    // スローガン リビールアニメーション
+    let sloganDone = false;
+    const sloganObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !sloganDone) {
+        sloganDone = true;
+        document.getElementById('slogan-section').classList.add('is-active');
+      }
+    }, { threshold: 0.3 });
+    sloganObs.observe(document.getElementById('slogan-section'));
+  </script>
+
+  <script src="data/players.js?v=1773655347"></script>
+  <script src="data/schedule.js"></script>
+  <script src="data/news.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    document.getElementById('top-member-count').textContent = PLAYERS.length;
+
+    const NO_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8eef3'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%23b0bec5'/%3E%3Cellipse cx='50' cy='80' rx='28' ry='20' fill='%23b0bec5'/%3E%3C/svg%3E";
+
+    // 選手のみ（STAFFを除く）
+    const sliderPlayers = PLAYERS.filter(p => p.pos !== 'STAFF' && p.num !== null);
+    const slider = document.getElementById('playerSlider');
+    const dotsWrap = document.getElementById('sliderDots');
+
+    const VISIBLE = 3; // 一度に表示する枚数
+    let current = 0;
+
+    // カード生成
+    sliderPlayers.forEach((p, i) => {
+      const card = document.createElement('a');
+      card.className = 'player-card';
+      card.href = `player#${p.num}`;
+      card.innerHTML = `
+        <div class="player-number">#${p.num}</div>
+        <div class="player-avatar slider-avatar">
+          <img src="images/players/${p.num}.jpg" alt="${p.name}" data-fallback="no-image">
+        </div>
+        <div class="player-info">
+          <p class="player-pos">${p.posLabel}</p>
+          <h3 class="player-name">${p.name}${p.captain ? ' <span class="captain-badge">主将</span>' : ''}</h3>
+        </div>
+      `;
+      slider.appendChild(card);
+
+      // ドット生成
+      const dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goSlide(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    // 画像エラー処理
+    slider.querySelectorAll('img[data-fallback="no-image"]').forEach(img => {
+      img.onerror = function() { this.onerror = null; this.src = NO_IMAGE; };
+    });
+
+    function goSlide(index) {
+      const cards = slider.querySelectorAll('.player-card');
+      const dots = dotsWrap.querySelectorAll('.slider-dot');
+      const cardWidth = cards[0].offsetWidth + 24; // gap=24px
+      const trackWidth = document.querySelector('.player-slider-track').offsetWidth;
+      const visible = Math.max(1, Math.floor(trackWidth / cardWidth));
+      const max = Math.max(0, sliderPlayers.length - visible);
+      current = Math.min(Math.max(index, 0), max);
+      slider.style.transform = `translateX(-${current * cardWidth}px)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById('sliderPrev').addEventListener('click', () => goSlide(current - 1));
+    document.getElementById('sliderNext').addEventListener('click', () => goSlide(current + 1));
+
+    // リサイズ時に位置再計算
+    window.addEventListener('resize', () => goSlide(current));
+
+    // ネクストマッチ: 結果未入力のdaysを展開して最も近い日を表示
+    const _allUpcomingDays = [];
+    SCHEDULE.filter(s => !(s.teams || s.resultSummary)).forEach(s => {
+      s.days.forEach(d => _allUpcomingDays.push({ ...d, tournament: s.tournament }));
+    });
+    const nextMatch = _allUpcomingDays
+      .sort((a,b) => new Date(parseInt(a.year),parseInt(a.month)-1,parseInt(a.day)) - new Date(parseInt(b.year),parseInt(b.month)-1,parseInt(b.day)))[0];
+    const nextMatchCard = document.getElementById('next-match-card');
+    if (nextMatch) {
+      nextMatchCard.innerHTML = `
+        <div class="match-card">
+          <div class="rr-date">
+            <span class="rr-month">${nextMatch.month}</span>
+            <span class="rr-day">${nextMatch.day}</span>
+          </div>
+          <div class="rr-info">
+            <p class="rr-tournament">🏆 ${nextMatch.tournament}</p>
+            <p class="rr-place">📍 ${nextMatch.place}</p>
+            ${nextMatch.time ? `<p class="rr-place">🕐 ${nextMatch.time} 開始予定</p>` : ''}
+          </div>
+        </div>`;
+    } else {
+      document.getElementById('next-match-section').style.display = 'none';
+    }
+
+    // お知らせ: 直近3件を表示
+    const CAT_LABELS = { result: '大会報告', info: 'お知らせ', event: 'イベント' };
+    const topNewsList = document.getElementById('top-news-list');
+    const latestNews = NEWS.slice(0, 3);
+    if (latestNews.length > 0) {
+      topNewsList.innerHTML = latestNews.map(n => {
+        const dateStr = n.date.replace(/-/g, '.').slice(2);
+        const catLabel = CAT_LABELS[n.category] || n.category;
+        return `
+          <a class="news-card" href="news#${n.id}">
+            <div class="news-card-body">
+              <div class="news-card-meta">
+                <span class="news-card-date">${dateStr}</span>
+                <span class="news-cat ${n.category}">${catLabel}</span>
+              </div>
+              <h3 class="news-card-title">${n.title}</h3>
+            </div>
+          </a>`;
+      }).join('');
+    } else {
+      document.getElementById('top-news-section').style.display = 'none';
+    }
+
+    // 試合結果: 結果入力済みの直近3件を表示
+    const recentResults = SCHEDULE
+      .filter(s => s.teams || s.resultSummary)
+      .sort((a,b) => {
+        const lastA = a.days[a.days.length-1], lastB = b.days[b.days.length-1];
+        return new Date(parseInt(lastB.year),parseInt(lastB.month)-1,parseInt(lastB.day))
+             - new Date(parseInt(lastA.year),parseInt(lastA.month)-1,parseInt(lastA.day));
+      })
+      .slice(0, 3);
+    const recentResultsList = document.getElementById('recent-results-list');
+    if (recentResults.length > 0) {
+      recentResultsList.innerHTML = recentResults.map(s => {
+        const teamsHtml = s.teams
+          ? s.teams.map(t => `
+              <div class="result-team-row">
+                <span class="result-team-name-top">${t.name}</span>
+                <span class="result-badge-top ${t.result === 'win' ? 'win' : 'lose'}">${t.summary}</span>
+              </div>`).join('')
+          : `<div class="result-team-row"><span class="result-badge-top">${s.resultSummary}</span></div>`;
+        return `
+          <a class="recent-result-card" href="schedule#results">
+            <div class="rr-date">
+              <span class="rr-month">${s.days[s.days.length-1].month}</span>
+              <span class="rr-day">${s.days[s.days.length-1].day}</span>
+            </div>
+            <div class="rr-info">
+              <p class="rr-tournament">${s.tournament}</p>
+              <p class="rr-place">📍 ${s.days[0].place}</p>
+              <div class="rr-teams">${teamsHtml}</div>
+            </div>
+            <div class="rr-arrow">詳細<br>→</div>
+          </a>`;
+      }).join('');
+    } else {
+      document.getElementById('recent-results-section').style.display = 'none';
+    }
+
+  </script>
 </body>
 </html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>試合日程・結果 | SUISEN Volleyball Club</title>
+  <meta name="description" content="SUISEN Volleyball Clubの試合日程と結果一覧。直近の試合情報・過去の試合結果を掲載しています。">
+  <meta name="keywords" content="SUISEN,バレーボール,試合日程,試合結果,スケジュール">
+  <meta property="og:title" content="試合日程・結果 | SUISEN Volleyball Club">
+  <meta property="og:description" content="SUISEN Volleyball Clubの試合日程と結果。直近の試合情報を随時更新中。">
+  <meta property="og:url" content="https://suisenvbclub.com/schedule.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://suisenvbclub.com/schedule.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=1773655347">
+  <link rel="stylesheet" href="css/schedule.css?v=2">
+</head>
+<body>
+
+  <script src="js/header.js"></script>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <p class="section-label">SCHEDULE & RESULTS</p>
+      <h1 class="page-title">試合日程・結果</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container" id="schedule-container">
+      <!-- JSで動的生成 -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text">SUISEN</span>
+        <span class="logo-sub">VOLLEYBALL CLUB</span>
+      </div>
+      <p class="footer-slogan">昼も夜も日本一</p>
+      <nav class="footer-nav">
+        <a href="./">HOME</a>
+        <a href="players">PLAYERS</a>
+        <a href="schedule">SCHEDULE</a>
+        <a href="news">NEWS</a>
+        <a href="contact">CONTACT</a>
+      </nav>
+      <div class="footer-sns"></div>
+      <p class="footer-copy">&copy; 2026 SUISEN Volleyball Club. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="data/schedule.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderSchedule() {
+      function toDate(d) {
+        return new Date(parseInt(d.year), parseInt(d.month) - 1, parseInt(d.day));
+      }
+
+      function hasResult(s) {
+        return s.teams || s.resultSummary;
+      }
+
+      // upcoming: daysを日ごとに展開 → 日付順にソート → 月ごとにグループ化
+      const upcomingDays = [];
+      SCHEDULE.filter(s => !hasResult(s)).forEach(s => {
+        s.days.forEach(d => upcomingDays.push({ ...d, tournament: s.tournament }));
+      });
+      upcomingDays.sort((a, b) => toDate(a) - toDate(b));
+
+      function upcomingItemHtml(d) {
+        const placeTime = d.time ? `📍 ${d.place} / 🕐 ${d.time}` : `📍 ${d.place}`;
+        return `
+          <div class="schedule-item upcoming">
+            <div class="sch-date">
+              <span class="sch-month">${d.month}</span>
+              <span class="sch-day">${d.day}</span>
+            </div>
+            <div class="sch-info">
+              <p class="sch-tournament">${d.tournament}</p>
+              <p class="sch-place">${placeTime}</p>
+            </div>
+            <div class="sch-status upcoming-badge">予定</div>
+          </div>`;
+      }
+
+      const monthGroups = [];
+      let currentMonth = null;
+      upcomingDays.forEach(d => {
+        if (d.month !== currentMonth) {
+          currentMonth = d.month;
+          monthGroups.push({ month: d.month, items: [] });
+        }
+        monthGroups[monthGroups.length - 1].items.push(d);
+      });
+
+      const upcomingHtml = monthGroups.length > 0
+        ? monthGroups.map(g => `
+            <div class="month-separator"><span class="month-separator-label">${g.month}</span></div>
+            <div class="schedule-list">${g.items.map(upcomingItemHtml).join('')}</div>
+          `).join('')
+        : '<p class="sch-empty">現在予定されている試合はありません。</p>';
+
+      // results: 1エントリー = 1カード（daysから日付範囲を取得）
+      const results = SCHEDULE.filter(s => hasResult(s))
+        .sort((a, b) => toDate(b.days[b.days.length - 1]) - toDate(a.days[a.days.length - 1]));
+
+      function resultCardHtml(s, i) {
+        const firstDay = s.days[0];
+        const lastDay  = s.days[s.days.length - 1];
+        const dateRange = s.days.length > 1
+          ? `${firstDay.month}${firstDay.day}日 〜 ${lastDay.month}${lastDay.day}日`
+          : `${firstDay.month}${firstDay.day}日`;
+
+        if (s.teams) {
+          const teamsHtml = s.teams.map(team => {
+            const badge = team.result === 'win'
+              ? `<span class="sch-status win-badge">${team.summary}</span>`
+              : `<span class="sch-status lose-badge">${team.summary}</span>`;
+            const roundsHtml = team.rounds.map(r => `
+              <div class="result-round">
+                <p class="result-round-label">${r.round}</p>
+                <div class="result-matches">
+                  ${r.matches.map(m => `
+                    <div class="result-match">
+                      <span class="match-vs">vs ${m.opponent}</span>
+                      <span class="match-score ${m.result}">${m.score}</span>
+                      <span class="match-label ${m.result}">${m.result === 'win' ? 'WIN' : 'LOSE'}</span>
+                    </div>`).join('')}
+                </div>
+              </div>`).join('');
+            return `
+              <div class="result-team">
+                <div class="result-team-header">
+                  <span class="result-team-name">${team.name}</span>
+                  ${badge}
+                </div>
+                <div class="result-rounds">${roundsHtml}</div>
+              </div>`;
+          }).join('');
+
+          return `
+            <div class="schedule-item result result-expandable" data-detail-id="${i}">
+              <div class="sch-date">
+                <span class="sch-month">${lastDay.month}</span>
+                <span class="sch-day">${lastDay.day}</span>
+              </div>
+              <div class="sch-info">
+                <p class="sch-tournament">${s.tournament}</p>
+                <p class="sch-place">📅 ${dateRange}</p>
+              </div>
+              <div class="result-expand-icon">
+                <span class="result-expand-label">試合結果を見る</span>
+                <span class="result-expand-arrow">▼</span>
+              </div>
+            </div>
+            <div class="result-detail" id="detail-${i}">${teamsHtml}</div>`;
+        }
+
+        const summary = s.resultSummary
+          ? `<div class="sch-status result-summary-badge">${s.resultSummary}</div>`
+          : '';
+        return `
+          <div class="schedule-item result">
+            <div class="sch-date">
+              <span class="sch-month">${lastDay.month}</span>
+              <span class="sch-day">${lastDay.day}</span>
+            </div>
+            <div class="sch-info">
+              <p class="sch-tournament">${s.tournament}</p>
+              <p class="sch-place">📅 ${dateRange}</p>
+            </div>
+            ${summary}
+          </div>`;
+      }
+
+      const resultsHtml = results.length > 0
+        ? `<div class="schedule-list">${results.map((s, i) => resultCardHtml(s, i)).join('')}</div>`
+        : '<p class="sch-empty">まだ試合結果はありません。</p>';
+
+      document.getElementById('schedule-container').innerHTML = `
+        <nav class="breadcrumb">
+          <a href="./">HOME</a>
+          <span>›</span>
+          <span>SCHEDULE</span>
+        </nav>
+        <div class="schedule-block">
+          <h2 class="schedule-block-title">
+            <span class="block-badge upcoming">UPCOMING</span>今後の試合
+          </h2>
+          ${upcomingHtml}
+        </div>
+        <div class="schedule-block" id="results">
+          <h2 class="schedule-block-title">
+            <span class="block-badge results">RESULTS</span>試合結果
+          </h2>
+          ${resultsHtml}
+        </div>`;
+    }
+
+    renderSchedule();
+
+    document.getElementById('schedule-container').addEventListener('click', e => {
+      const card = e.target.closest('.result-expandable');
+      if (!card) return;
+      const id     = card.dataset.detailId;
+      const detail = document.getElementById('detail-' + id);
+      if (!detail) return;
+      const isOpen = detail.classList.toggle('is-open');
+      const label  = card.querySelector('.result-expand-label');
+      const arrow  = card.querySelector('.result-expand-arrow');
+      if (label) label.textContent = isOpen ? '閉じる' : '試合結果を見る';
+      if (arrow) arrow.textContent = isOpen ? '▲' : '▼';
+    });
+  </script>
+</body>
+</html>

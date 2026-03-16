@@ -1,0 +1,237 @@
+/* ============================================
+   個人ページ (player.html)
+   ============================================ */
+
+/* ページヒーロー */
+.player-hero {
+  position: relative;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 70px;
+}
+
+.player-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+}
+
+.player-hero-bg::after {
+  content: 'PLAYER';
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  font-size: 160px;
+  font-weight: 900;
+  color: rgba(41, 182, 216, 0.05);
+  letter-spacing: -5px;
+  pointer-events: none;
+}
+
+.player-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+
+.player-hero-content .section-label {
+  font-size: 16px;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.player-hero-name {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.player-captain-badge {
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--accent);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+.player-hero-num {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+
+/* プロフィールグリッド */
+.player-profile-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* 写真 */
+.player-photo-wrap {
+  position: static;
+}
+
+.player-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
+  background: var(--light);
+  border: 1px solid #eee;
+}
+
+/* 詳細 */
+.player-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 40px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.player-data-row {
+  display: flex;
+  align-items: center;
+}
+
+.player-data-row dt {
+  width: 145px;
+  padding: 14px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gray);
+  background: var(--light);
+  border-right: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.player-data-row dd {
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.player-data-row + .player-data-row {
+  border-top: 1px solid #eee;
+}
+
+/* セクション */
+.player-section {
+  margin-bottom: 32px;
+}
+
+.player-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.player-section-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--dark);
+}
+
+.player-quote {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  border-left: 3px solid var(--primary);
+  padding-left: 16px;
+  line-height: 1.6;
+}
+
+/* 前後ナビ */
+.player-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.player-nav-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--light);
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.player-nav-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 主将バッジ（roster-card内） */
+.captain-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--accent);
+  color: var(--white);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* 見つからない場合 */
+.player-not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 70px;
+  color: var(--gray);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .player-profile-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .player-photo-wrap {
+    position: static;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .player-nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
