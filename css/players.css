@@ -198,16 +198,24 @@
   pointer-events: none;
 }
 
+
 .roster-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.roster-card:hover .roster-photo img { transform: scale(1.04); }
+.roster-img-2 {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.roster-card:hover .roster-img-1 { transform: scale(1.04); }
+.roster-card:hover .roster-img-2 { opacity: 1; transform: scale(1.04); }
 
 .roster-detail {
   padding: 0 14px;
