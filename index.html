@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1773623144">
+  <link rel="stylesheet" href="css/style.css?v=1773624162">
   <link rel="stylesheet" href="css/news.css?v=1">
 </head>
 <body>
@@ -52,8 +52,8 @@
       <div class="hero-dot" onclick="goToSlide(2)"></div>
     </div>
     <div class="hero-content">
-      <p class="hero-label">SUISEN VOLLEYBALL CLUB</p>
-      <h1 class="hero-title">昼も夜も<br>日本一</h1>
+      <p class="hero-label">SINCE 2020 — SUISEN VOLLEYBALL CLUB</p>
+      <h1 class="hero-title">SUISEN</h1>
       <p class="hero-desc">勝利への情熱を、コートで証明する。</p>
       <div class="hero-buttons">
         <a href="players" class="btn btn-primary">PLAYERS</a>
@@ -63,6 +63,20 @@
     <div class="hero-scroll">
       <span>SCROLL</span>
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- スローガンセクション -->
+  <section class="slogan-section" id="slogan-section">
+    <div class="slogan-inner">
+      <div class="slogan-deco-line"></div>
+      <p class="slogan-label">OUR MOTTO</p>
+      <h2 class="slogan-text">
+        <span class="slogan-line-wrap"><span class="slogan-line">昼も夜も</span></span>
+        <span class="slogan-line-wrap"><span class="slogan-line">日本一</span></span>
+      </h2>
+      <div class="slogan-deco-line-bottom"></div>
+      <p class="slogan-en">STRIVE FOR THE BEST, DAY AND NIGHT</p>
     </div>
   </section>
 
@@ -220,7 +234,19 @@
     </div>
   </footer>
 
-  <script src="data/players.js?v=1773623144"></script>
+  <script>
+    // スローガン リビールアニメーション
+    let sloganDone = false;
+    const sloganObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !sloganDone) {
+        sloganDone = true;
+        document.getElementById('slogan-section').classList.add('is-active');
+      }
+    }, { threshold: 0.3 });
+    sloganObs.observe(document.getElementById('slogan-section'));
+  </script>
+
+  <script src="data/players.js?v=1773624162"></script>
   <script src="data/schedule.js"></script>
   <script src="data/news.js"></script>
   <script src="js/main.js"></script>
