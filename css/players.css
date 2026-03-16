@@ -24,7 +24,6 @@
   position: absolute;
   right: -20px;
   bottom: -20px;
-  font-family: var(--font-en);
   font-size: 160px;
   font-weight: 900;
   color: rgba(41, 182, 216, 0.05);
@@ -50,7 +49,6 @@
 }
 
 .page-title {
-  font-family: var(--font-en);
   font-size: clamp(40px, 7vw, 64px);
   font-weight: 900;
   color: var(--white);
@@ -109,7 +107,6 @@
 
 .pos-tab-en {
   display: block;
-  font-family: var(--font-en);
   font-size: 12px;
   font-weight: 600;
   color: var(--dark);
@@ -150,7 +147,6 @@
 }
 
 .pos-label-en {
-  font-family: var(--font-en);
   font-size: clamp(22px, 3.5vw, 32px);
   font-weight: 700;
   color: var(--dark);
@@ -237,7 +233,6 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-en);
   font-size: 26px;
   font-weight: 700;
   color: var(--white);

@@ -18,7 +18,6 @@
   position: absolute;
   right: -20px;
   bottom: -20px;
-  font-family: var(--font-en);
   font-size: 160px;
   font-weight: 900;
   color: rgba(41, 182, 216, 0.05);
@@ -124,7 +123,6 @@
 
 .big-num {
   display: block;
-  font-family: var(--font-en);
   font-size: 52px;
   font-weight: 900;
   color: var(--primary);
@@ -188,7 +186,6 @@
 }
 
 .timeline-year {
-  font-family: var(--font-en);
   font-size: 20px;
   font-weight: 900;
   color: var(--primary);

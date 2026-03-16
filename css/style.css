@@ -12,7 +12,39 @@
   --light: #f4f8fb;
   --white: #ffffff;
   --accent: #ff6b35;
-  --font-en: 'Arial Black', 'Impact', sans-serif;
+  --font-en: 'Oswald', 'Arial Black', sans-serif;
+}
+
+/* ============================================
+   英字フォント 一括指定
+   ============================================ */
+.splash-logo-text, .splash-logo-sub,
+.logo-text, .logo-sub,
+.nav a, .footer-nav a,
+.btn,
+.section-label,
+.hero-label, .hero-scroll,
+.breadcrumb,
+.stat-num, .stat-label,
+.player-number, .player-pos,
+.rr-month, .rr-day,
+.page-title, .page-hero-label, .page-hero-bg::after,
+.news-filter-btn,
+.news-cat, .top-news-cat,
+.news-card-date, .top-news-date,
+.news-card-link, .news-back,
+.big-num, .big-label,
+.timeline-year,
+.pos-tab-en, .pos-label-en,
+.roster-num, .roster-pos, .captain-badge,
+.player-hero-num, .player-section-label,
+.player-captain-badge, .player-nav-btn,
+.block-badge, .month-separator,
+.sch-month, .sch-day, .sch-score, .sch-status,
+.result-expand-label, .result-round-label,
+.match-score, .match-label,
+.summary-num, .summary-label {
+  font-family: var(--font-en);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,7 +110,6 @@ body {
 }
 
 .splash-logo-text {
-  font-family: var(--font-en);
   font-size: clamp(52px, 12vw, 96px);
   font-weight: 900;
   color: var(--primary);
@@ -142,7 +173,6 @@ body {
 }
 
 .logo-text {
-  font-family: var(--font-en);
   font-size: 22px;
   font-weight: 900;
   color: var(--primary);
@@ -697,7 +727,6 @@ body {
 }
 
 .stat-num {
-  font-family: var(--font-en);
   font-size: 48px;
   font-weight: 900;
   color: var(--primary);
@@ -748,7 +777,6 @@ body {
   position: absolute;
   top: 16px;
   right: 20px;
-  font-family: var(--font-en);
   font-size: 40px;
   font-weight: 900;
   color: rgba(41, 182, 216, 0.12);
@@ -913,7 +941,6 @@ a.recent-result-card:hover {
 }
 
 .rr-month {
-  font-family: var(--font-en);
   font-size: 11px;
   font-weight: 700;
   color: var(--primary);
@@ -921,7 +948,6 @@ a.recent-result-card:hover {
 }
 
 .rr-day {
-  font-family: var(--font-en);
   font-size: 36px;
   font-weight: 900;
   color: var(--white);
@@ -1006,7 +1032,6 @@ a.recent-result-card:hover {
 }
 
 .footer-logo .logo-text {
-  font-family: var(--font-en);
   font-size: 28px;
   font-weight: 900;
   color: var(--primary);
