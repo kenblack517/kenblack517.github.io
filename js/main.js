@@ -67,7 +67,9 @@ if (slides.length > 0) {
     goToSlide((currentSlide + 1) % slides.length);
   }
 
-  slideTimer = setInterval(nextSlide, 5000);
+  if (window.innerWidth > 640) {
+    slideTimer = setInterval(nextSlide, 5000);
+  }
 }
 
 // ============================================
