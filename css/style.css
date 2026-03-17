@@ -1350,7 +1350,11 @@ a.recent-result-card:hover {
 
   .section { padding: 40px 0; }
   .hero { height: 75vh; min-height: 480px; }
+  .hero-content { padding-top: 60px; }
   .hero-title { font-size: clamp(48px, 14vw, 80px); }
+  .hero-label { margin-bottom: 10px; }
+  .hero-title { margin-bottom: 16px; }
+  .hero-desc  { margin-bottom: 24px; }
   .section-header { margin-bottom: 32px; }
   .section-more { margin-top: 28px; }
   .slogan-section { min-height: 40vh; }
