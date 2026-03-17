@@ -1340,6 +1340,9 @@ a.recent-result-card:hover {
     background:
       linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)),
       url('../images/TOP1_sp.JPG') center/cover no-repeat;
+    transition: none;
+    opacity: 1 !important;
+    transform: scale(1) !important;
   }
   .hero-slide:nth-child(2),
   .hero-slide:nth-child(3) { display: none; }
