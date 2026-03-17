@@ -1349,12 +1349,11 @@ a.recent-result-card:hover {
   .hero-indicators { display: none; }
 
   .section { padding: 40px 0; }
-  .hero { height: 75vh; min-height: 480px; }
-  .hero-content { padding-top: 60px; }
-  .hero-title { font-size: clamp(48px, 14vw, 80px); }
+  .hero { height: 75vh; min-height: 480px; align-items: flex-end; }
+  .hero-content { padding-bottom: 80px; }
+  .hero-title { font-size: clamp(48px, 14vw, 80px); margin-bottom: 16px; }
   .hero-label { margin-bottom: 10px; }
-  .hero-title { margin-bottom: 16px; }
-  .hero-desc  { margin-bottom: 24px; }
+  .hero-desc  { margin-bottom: 20px; }
   .section-header { margin-bottom: 32px; }
   .section-more { margin-top: 28px; }
   .slogan-section { min-height: 40vh; }
