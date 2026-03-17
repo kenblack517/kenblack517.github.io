@@ -1336,6 +1336,15 @@ a.recent-result-card:hover {
 }
 
 @media (max-width: 640px) {
+  .hero-slide:nth-child(1) {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)),
+      url('../images/TOP1_sp.jpg');
+  }
+  .hero-slide:nth-child(2),
+  .hero-slide:nth-child(3) { display: none; }
+  .hero-indicators { display: none; }
+
   .section { padding: 40px 0; }
   .hero { height: 75vh; min-height: 480px; }
   .hero-title { font-size: clamp(48px, 14vw, 80px); }
