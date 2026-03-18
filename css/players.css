@@ -332,7 +332,7 @@
   }
 
   .roster-num { font-size: 20px; }
-  .roster-name { font-size: 14px; }
+  .roster-name { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .roster-num-name .roster-name { padding-left: 26px; }
   .roster-detail { height: 44px; margin-top: -44px; }
 }
