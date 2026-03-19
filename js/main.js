@@ -60,7 +60,7 @@ if (slides.length > 0) {
     slides[currentSlide].classList.add('active');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     clearInterval(slideTimer);
-    slideTimer = setInterval(nextSlide, 5000);
+    slideTimer = setInterval(nextSlide, 7000);
   }
 
   function nextSlide() {
@@ -68,7 +68,7 @@ if (slides.length > 0) {
   }
 
   if (window.innerWidth > 640) {
-    slideTimer = setInterval(nextSlide, 5000);
+    slideTimer = setInterval(nextSlide, 7000);
   }
 }
 
