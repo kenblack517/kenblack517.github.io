@@ -47,6 +47,10 @@
   font-family: var(--font-en);
 }
 
+.captain--team   { background: #f0a500 !important; color: #fff !important; }
+.captain--suisen { background: var(--primary) !important; color: #fff !important; }
+.captain--suisui { background: #ffffff !important; color: #0a1628 !important; }
+
 /* ============================================
    英字イタリック
    ============================================ */
