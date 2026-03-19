@@ -65,9 +65,15 @@
 .roster-photo .captain-badge--overlay {
   top: auto;
   left: 50%;
-  bottom: 10px;
+  bottom: 58px;
   transform: translateX(-50%);
   white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .roster-photo .captain-badge--overlay {
+    bottom: 50px;
+  }
 }
 
 /* ============================================
