@@ -1309,7 +1309,7 @@ a.recent-result-card:hover {
   .hamburger { display: flex; z-index: 1001; }
 
   .player-slider-wrap { padding: 0 44px; }
-  .player-slider .player-card { flex: 0 0 calc(100% - 24px); }
+  .player-slider .player-card { flex: 0 0 100%; }
 
   .about-grid {
     grid-template-columns: 1fr;
