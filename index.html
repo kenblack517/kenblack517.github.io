@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1773885581">
+  <link rel="stylesheet" href="css/style.css?v=1773885725">
   <link rel="stylesheet" href="css/news.css?v=1">
 </head>
 <body>
@@ -245,7 +245,7 @@
     sloganObs.observe(document.getElementById('slogan-section'));
   </script>
 
-  <script src="data/players.js?v=1773885581"></script>
+  <script src="data/players.js?v=1773885725"></script>
   <script src="data/schedule.js"></script>
   <script src="data/news.js"></script>
   <script src="js/main.js"></script>
@@ -269,9 +269,9 @@
       card.href = `player#${p.num}`;
       card.innerHTML = `
         <div class="player-number">#${p.num}</div>
+        ${p.captain ? `<span class="captain-badge ${p.captain === 'チームキャプテン' ? 'captain--team' : p.captain === 'SUISENキャプテン' ? 'captain--suisen' : 'captain--suisui'} captain-badge--overlay">${p.captain}</span>` : ''}
         <div class="player-avatar slider-avatar">
           <img src="images/players/${p.num}.jpg" alt="${p.name}" data-fallback="no-image">
-          ${p.captain ? `<span class="captain-badge ${p.captain === 'チームキャプテン' ? 'captain--team' : p.captain === 'SUISENキャプテン' ? 'captain--suisen' : 'captain--suisui'} captain-badge--overlay">${p.captain}</span>` : ''}
         </div>
         <div class="player-info">
           <p class="player-pos">${p.posLabel}</p>
