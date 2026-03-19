@@ -58,7 +58,7 @@
   z-index: 2;
   font-size: 9px !important;
   padding: 2px 6px !important;
-  border-radius: 4px;
+  border-radius: 0;
   pointer-events: none;
 }
 
@@ -67,7 +67,7 @@
   left: 0;
   bottom: auto;
   transform: none;
-  border-radius: 0 0 4px 0;
+  border-radius: 0;
   white-space: nowrap;
 }
 
@@ -77,7 +77,7 @@
     left: 0;
     bottom: auto;
     transform: none;
-    border-radius: 0 0 4px 0;
+    border-radius: 0;
   }
 }
 
