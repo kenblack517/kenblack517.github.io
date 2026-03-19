@@ -2,6 +2,46 @@
    PLAYERS PAGE
    ============================================ */
 
+/* 更新中テロップ */
+.players-ticker {
+  display: flex;
+  overflow: hidden;
+  height: 36px;
+  background: #0e1a2b;
+}
+
+.players-ticker-label {
+  flex-shrink: 0;
+  background: var(--primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0 14px;
+  line-height: 36px;
+}
+
+.players-ticker-track {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.players-ticker-text {
+  display: inline-block;
+  color: #e0f0f8;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 36px;
+  animation: ticker-scroll 24s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ページヘッダー */
 .page-hero {
   position: relative;
