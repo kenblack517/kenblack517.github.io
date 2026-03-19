@@ -51,6 +51,17 @@
 .captain--suisen { background: var(--primary) !important; color: #fff !important; }
 .captain--suisui { background: #ffffff !important; color: #0a1628 !important; }
 
+.captain-badge--overlay {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  font-size: 9px !important;
+  padding: 2px 6px !important;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
 /* ============================================
    英字イタリック
    ============================================ */
@@ -958,6 +969,11 @@ body {
 .player-slider .player-card {
   flex: 0 0 calc((100% - 48px) / 3);
   flex-shrink: 0;
+}
+
+.slider-avatar {
+  position: relative;
+  display: inline-block;
 }
 
 .slider-avatar img {
