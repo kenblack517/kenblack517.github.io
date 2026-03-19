@@ -72,7 +72,10 @@
 
 @media (max-width: 640px) {
   .roster-photo .captain-badge--overlay {
-    bottom: 50px;
+    top: 6px;
+    left: 6px;
+    bottom: auto;
+    transform: none;
   }
 }
 
