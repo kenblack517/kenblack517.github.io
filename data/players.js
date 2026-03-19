@@ -149,6 +149,21 @@ const PLAYERS = [
 
   // SETTER
   {
+    num: 13,
+    name: "佐藤 玲",
+    pos: "S",
+    posLabel: "セッター",
+    height: 174,
+    reach: 315,
+    captain: true,
+    birthplace: "東京都",
+    highschool: "早稲田実業",
+    school: "早稲田大学",
+    style: "鍛え上げた腕から繰り出される時速20kmのフローターサーブとジャンプしてもネットから手が出ない低いセットアップ",
+    word: "ランチサービス大盛り無料",
+    hobby: "愛犬の散歩",
+  },
+  {
     num: 10,
     name: "松本 優大",
     pos: "S",
@@ -457,6 +472,21 @@ const PLAYERS = [
   },
 
   // OPPOSITE
+  {
+    num: 3,
+    name: "安部 翔維斗",
+    pos: "OP",
+    posLabel: "オポジット",
+    height: 183,
+    reach: 334,
+    captain: false,
+    birthplace: "島根県",
+    highschool: "安来高校",
+    school: "法政大学",
+    style: "鉄壁",
+    word: "主夫、なめたらあかんで！！",
+    hobby: "料理、掃除、洗濯",
+  },
   {
     num: 19,
     name: "岸本 滉平",
