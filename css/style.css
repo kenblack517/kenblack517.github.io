@@ -70,8 +70,8 @@
 
 @media (max-width: 640px) {
   .captain-badge--overlay {
-    font-size: 9px !important;
-    padding: 1px 4px !important;
+    font-size: 7px !important;
+    padding: 1px 3px !important;
   }
 }
 
