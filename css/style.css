@@ -56,15 +56,21 @@
   top: 8px;
   left: 8px;
   z-index: 2;
-  font-size: 12px !important;
-  padding: 4px 10px !important;
   border-radius: 0;
   margin-left: 0 !important;
   pointer-events: none;
 }
 
+@media (min-width: 641px) {
+  .captain-badge--overlay {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+  }
+}
+
 @media (max-width: 640px) {
   .captain-badge--overlay {
+    font-size: 9px !important;
     padding: 1px 4px !important;
   }
 }
