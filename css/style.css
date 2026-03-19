@@ -63,10 +63,11 @@
 }
 
 .roster-photo .captain-badge--overlay {
-  top: auto;
-  left: 50%;
-  bottom: 58px;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  bottom: auto;
+  transform: none;
+  border-radius: 0 0 4px 0;
   white-space: nowrap;
 }
 
