@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1773884578">
+  <link rel="stylesheet" href="css/style.css?v=1773884864">
   <link rel="stylesheet" href="css/news.css?v=1">
 </head>
 <body>
@@ -245,7 +245,7 @@
     sloganObs.observe(document.getElementById('slogan-section'));
   </script>
 
-  <script src="data/players.js?v=1773884578"></script>
+  <script src="data/players.js?v=1773884864"></script>
   <script src="data/schedule.js"></script>
   <script src="data/news.js"></script>
   <script src="js/main.js"></script>
@@ -305,6 +305,15 @@
 
     document.getElementById('sliderPrev').addEventListener('click', () => goSlide(current - 1));
     document.getElementById('sliderNext').addEventListener('click', () => goSlide(current + 1));
+
+    // タッチスワイプ対応
+    let touchStartX = 0;
+    const sliderTrack = document.querySelector('.player-slider-track');
+    sliderTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    sliderTrack.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goSlide(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
 
     // リサイズ時に位置再計算
     window.addEventListener('resize', () => goSlide(current));
